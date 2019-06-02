@@ -2,11 +2,12 @@
 
 const CANVAS = document.getElementById('canvas');// 获取画布
 const CTX = CANVAS.getContext('2d');// 获取绘图环境
-CANVAS.setAttribute('width', window.screen.width * window.devicePixelRatio);
-CANVAS.setAttribute('height', window.screen.height * window.devicePixelRatio);
+CANVAS.setAttribute('width', window.screen.width/* * window.devicePixelRatio */ + 'px');
+CANVAS.setAttribute('height', window.screen.height/* * window.devicePixelRatio*/ + 'px');
 
-const G = 10;// 重力加速度
-const SCREEN_HEIGHT_IN_METERS = 100;// 设定屏幕高度为100米
+const G = 9.8;// 重力加速度
+const V = -100;// 单次点击给小鸟向上的初速度
+const SCREEN_HEIGHT_IN_METERS = 200;// 假设屏幕高度为实际米数
 const PIXELS_PER_METER = CANVAS.height / SCREEN_HEIGHT_IN_METERS;// 设置1米等于多少像素
 
 let game = new Game('FlappyBird', 'canvas');// 创建一个新游戏
@@ -20,7 +21,7 @@ let birdBehaviors = [// 存储小鸟的所有行为
 		PAGEFLIP_INTERVAL: 200,
 		execute: function(sprite, context, now){
 			if( now - this.lastAdvance > this.PAGEFLIP_INTERVAL ){// 间隔固定时间切换精灵表中的下一张图片
-				sprite.painter.advance();
+				sprite.painter.advance();// 更新精灵表中的图片位置
 				this.lastAdvance = now;
 			}
 		}
@@ -29,7 +30,10 @@ let birdBehaviors = [// 存储小鸟的所有行为
 		lastAdvance: 0,
 		PAGEFLIP_INTERVAL: 200,
 		execute: function(sprite, context, now){
-			sprite.top += sprite.velocityY / fps;
+			h += game.pixelsPerFrame(sprite.velocityY) + (sprite.velocityY * (game.gameTime / 1000));// 精灵当前这一帧所移动的像素 = 每米移动的像素 / 每秒播放的帧数
+			sprite.velocityY = G * (game.gameTime / 1000) * PIXELS_PER_METER;// 计算精灵的瞬时速度(像素 / 秒)
+			sprite.top = h;
+			console.log(sprite.top)
 		}
 
 	}
@@ -38,7 +42,7 @@ let birdBehaviors = [// 存储小鸟的所有行为
 let bird = new Sprite('bird', new SpriteSheetPainter(birdCells, birdSheet), birdBehaviors);// 创建小鸟
 
 let loadingInterval;// 创建loading页面加载定时器
-let loadingComplete = 0;;// 创建loading页面加载定时器
+let loadingComplete = 0;// 创建loading页面加载定时器
 let birdFly = document.getElementById('birdFly');// 获取小鸟容器
 let clipX = 0;// 小鸟图片裁切X值(backgroundPosition样式)
 let progressBarBox = document.getElementById('progressBarBox');// 获取进度条
@@ -86,11 +90,21 @@ game.addSprite(bird);// 向游戏里添加小鸟
 bird.top = 100;// 小鸟初始离顶端位置
 bird.left = 70;// 小鸟初始离左端位置
 
+
+
 //-----------------------主菜单交互
 startGame.addEventListener('click', function(e){
+	e.preventDefault();
 	e.stopPropagation();
 	mainMenuBox.style.display = 'none';// 隐藏主菜单
 	game.start();// 开启游戏循环
+
+	CANVAS.addEventListener('click', function(e){// 添加小鸟的点击事件
+		e.preventDefault();
+		e.stopPropagation();
+		h = 0;
+		bird.velocityY = -200;
+	});
 });
 
 

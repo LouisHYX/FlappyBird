@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/FlappyBird.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.html" afterDir="false" />
+    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容">
+      <change beforePath="$PROJECT_DIR$/FlappyBird.css" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/init.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,20 +18,52 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Game.js">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/FlappyBird.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="551">
+              <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sprite.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="812">
+              <caret line="28" column="37" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/init.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-329">
+              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/FlappyBird.html">
+        <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+            <state relative-caret-position="462">
+              <caret line="164" column="35" lean-forward="true" selection-start-line="164" selection-start-column="35" selection-end-line="164" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>time</find>
+      <find>gameTime</find>
+      <find>keyAndListener</find>
+      <find>velocity</find>
+      <find>ex</find>
+      <find>execute</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,6 +72,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/FlappyBird.html" />
+        <option value="$PROJECT_DIR$/FlappyBird.css" />
+        <option value="$PROJECT_DIR$/Game.js" />
+        <option value="$PROJECT_DIR$/init.js" />
       </list>
     </option>
   </component>
@@ -52,7 +89,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="82" />
+    <option name="x" value="80" />
     <option name="y" value="23" />
     <option name="width" value="1873" />
     <option name="height" value="1034" />
@@ -81,7 +118,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -105,7 +142,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559469757739</updated>
-      <workItem from="1559469758913" duration="204000" />
+      <workItem from="1559469758913" duration="10390000" />
     </task>
     <task id="LOCAL-00001" summary="修改canvas标签中的文字内容">
       <created>1559469840805</created>
@@ -114,14 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1559469840805</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修改canvas标签中的文字内容">
+      <created>1559469996878</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559469996878</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="204000" />
+    <option name="totallyTimeSpent" value="10390000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="82" y="23" width="1873" height="1034" extended-state="0" />
+    <frame x="80" y="23" width="1873" height="1034" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -151,13 +195,38 @@
     <option name="LAST_COMMIT_MESSAGE" value="修改canvas标签中的文字内容" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Game.js">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/FlappyBird.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="58" selection-start-column="58" selection-end-column="58" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FlappyBird.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        <state relative-caret-position="551">
+          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sprite.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-329">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="164" column="35" lean-forward="true" selection-start-line="164" selection-start-column="35" selection-end-line="164" selection-end-column="35" />
         </state>
       </provider>
     </entry>

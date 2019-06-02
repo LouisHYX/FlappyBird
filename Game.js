@@ -161,8 +161,8 @@ Game.prototype = {
 			this.lastTime = now;
 		}
 	},
-	pixelsPerFrame: function (time, velocity) {
-		return velocity / game.fps;
+	pixelsPerFrame: function (velocity) {
+		return velocity / this.fps;
 	},
 
 	// 高分榜
@@ -185,6 +185,13 @@ Game.prototype = {
 	clearHighScores: function () {
 		localStorage[this.gameName + this.HIGH_SCORES_SUFFIX] = JSON.stringify([]);
 	},
+
+	// 触摸事件
+	touchEvent: function (e) {
+
+	},
+
+	// 键盘事件
 	addKeyListener: function (keyAndListener) {
 		this.keyListeners.push(keyAndListener);
 	},
@@ -261,7 +268,7 @@ Game.prototype = {
 		this.sprites.push(sprite);
 	},
 	getSprite: function (name) {
-		for (i in this.sprites) {
+		for (let i in this.sprites) {
 			if (this.sprites[i].name === name){
 				return this.sprites[i];
 			}
