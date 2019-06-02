@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>FlappyBird</title>
+	<link rel="stylesheet" type="text/css" href="FlappyBird.css">
+</head>
+<body>
+	<!-- 画布 -->
+	<canvas id="canvas">该浏览器不支持canvas</canvas>
+
+	<!-- 主菜单 -->
+	<div class="mainMenuBox" id="mainMenuBox">
+		<h3 class="levelHead">FlappyBird</h3>	
+		<div class="levelButton" id="easyLevel"></div>
+		<div class="levelButton" id="normalLevel"></div>
+		<div class="levelButton" id="hardLevel"></div>
+		<div class="startGame" id="startGame"></div>
+	</div>
+
+	<!-- loading页 -->
+	<div class="loadingBackground" id="loadingBackground">
+		<div class="loadingBox">
+			<div class="birdFly" id="birdFly"></div>
+			<div class="progressBarBox" id="progressBarBox">
+				<div class="progressBar" id="progressBar"></div>
+			</div>
+			<div class="loadingText" id="loadingText"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="RequestNextAnimationFrame.js"></script>
+	<script type="text/javascript" src="Game.js"></script>
+	<script type="text/javascript" src="Sprite.js"></script>
+	<script type="text/javascript" src="init.js"></script>
+</body>
+</html>

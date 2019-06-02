@@ -1,0 +1,18 @@
+*{ padding: 0; margin: 0; border: none;}
+html{ width: 100%; height: 100%; }
+
+
+/*loading页*/
+.loadingBackground{ display: none; background: white; width: 100%; height: 100%; position: absolute; top: 0; left: 0;}
+.loadingBox{ width: 60%; height: 300px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; }
+.birdFly{ width: 80px; height: 58px; margin: 40px auto; }
+.progressBarBox{ box-sizing: border-box; width: 100%; height: 40px; border: 4px solid #a4795d; }
+.progressBar{ width: 0; height: 32px; background: #a4795d; }
+.loadingText{ margin-top: 20px; font-size: 50px; color: #a4795d; font-family: Arial; }
+
+/*主菜单*/
+.mainMenuBox{ background: gray; width: 60%; height: 44%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 4%; box-sizing: border-box;}
+.mainMenuBox div{ width: 80%; height: 14%; margin: auto; cursor: pointer; }
+.mainMenuBox .levelHead{ color: white; }
+.mainMenuBox .levelButton{ background: white; margin-top: 8%;}
+.mainMenuBox .startGame{ background: white; margin-top: 20%;}
