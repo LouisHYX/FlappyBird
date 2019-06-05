@@ -34,7 +34,6 @@ let birdBehaviors = [// 存储小鸟的所有行为
 			sprite.velocityY = G * (game.gameTime / 1000) * PIXELS_PER_METER;// 计算精灵的瞬时速度(像素 / 秒)
 			console.log(sprite.velocityY)
 		}
-
 	}
 ];
 
