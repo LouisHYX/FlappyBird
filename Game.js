@@ -191,6 +191,11 @@ Game.prototype = {
 
 	},
 
+	// 鼠标点击事件
+	mouseClick: function (e) {
+
+	},
+
 	// 键盘事件
 	addKeyListener: function (keyAndListener) {
 		this.keyListeners.push(keyAndListener);
