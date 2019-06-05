@@ -56,14 +56,13 @@ let hardLevel = document.getElementById('hardLevel');// 获取困难难度按钮
 let startGame = document.getElementById('startGame');// 获取开始按钮
 
 //-----------------------图片加载
-game.queueImage('img/01.png');
-game.queueImage('img/02.png');
-game.queueImage('img/03.png');
-game.queueImage('img/04.png');
-game.queueImage('img/05.png');
-game.queueImage('img/06.png');
-game.queueImage('img/07.png');
-game.queueImage('img/08.png');
+game.queueImage('img/start_game_btn.png');
+game.queueImage('img/level_label.png');
+game.queueImage('img/level_easy_btn.png');
+game.queueImage('img/level_normal_btn.png');
+game.queueImage('img/level_hard_btn.png');
+game.queueImage('img/cutting_line.png');
+game.queueImage('img/main_menu_bg.png');
 game.queueImage('img/bird_sheet.png');
 game.queueImage('img/loading_text.png');
 
