@@ -11,16 +11,19 @@
 	<canvas id="canvas">请升级您的浏览器版本以支持该游戏</canvas>
 
 	<!-- 主菜单 -->
-	<div class="mainMenuBox" id="mainMenuBox">
-		<h3 class="levelHead">FlappyBird</h3>	
-		<div class="levelButton" id="easyLevel"></div>
-		<div class="levelButton" id="normalLevel"></div>
-		<div class="levelButton" id="hardLevel"></div>
-		<div class="startGame" id="startGame"></div>
-	</div>
+	<aside class="mainMenuBox" id="mainMenuBox">
+		<h4 class="levelLabel"></h4>	
+		<ul>
+			<li class="levelButton easyLevel" id="easyLevel"></li>
+			<li class="levelButton normalLevel" id="normalLevel"></li>
+			<li class="levelButton hardLevel" id="hardLevel"></li>
+			<li class="cutting_line"></li>
+			<li class="startGame" id="startGame"></li>
+		</ul>
+	</aside>
 
 	<!-- loading页 -->
-	<div class="loadingBackground" id="loadingBackground">
+	<aside class="loadingBackground" id="loadingBackground">
 		<div class="loadingBox">
 			<div class="birdFly" id="birdFly"></div>
 			<div class="progressBarBox" id="progressBarBox">
@@ -28,7 +31,7 @@
 			</div>
 			<div class="loadingText" id="loadingText"></div>
 		</div>
-	</div>
+	</aside>
 
 	<script type="text/javascript" src="RequestNextAnimationFrame.js"></script>
 	<script type="text/javascript" src="Game.js"></script>
