@@ -1,4 +1,5 @@
 *{ padding: 0; margin: 0; border: none; overflow: hidden; }
+ul{ list-style: none; }
 html{ width: 100%; height: 100%; }
 
 
@@ -11,8 +12,12 @@ html{ width: 100%; height: 100%; }
 .loadingText{ margin-top: 20px; font-size: 50px; color: #a4795d; font-family: Arial; }
 
 /*主菜单*/
-.mainMenuBox{ background: gray; width: 60%; height: 44%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 4%; box-sizing: border-box;}
-.mainMenuBox div{ width: 80%; height: 14%; margin: auto; cursor: pointer; }
-.mainMenuBox .levelHead{ color: white; }
-.mainMenuBox .levelButton{ background: white; margin-top: 8%;}
-.mainMenuBox .startGame{ background: white; margin-top: 20%;}
+.mainMenuBox{ background: url('img/main_menu_bg.png') no-repeat; background-size: 100% 100%; width: 270px; height: 350px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 4%; box-sizing: border-box;}
+.mainMenuBox .levelLabel{ background: url('img/level_label.png') no-repeat; background-size: 100% 100%; width: 162px; height: 16px; margin: auto; margin-top: 12px; }
+.mainMenuBox ul li{ width: 156px; margin: 12px auto; }
+.mainMenuBox .levelButton{  height: 48px; cursor: pointer; }
+.mainMenuBox .easyLevel{ background: url('img/level_easy_btn.png') no-repeat; background-position: 0 0; background-size: 100%; }
+.mainMenuBox .normalLevel{ background: url('img/level_normal_btn.png') no-repeat; background-position: 0 0; background-size: 100%; }
+.mainMenuBox .hardLevel{ background: url('img/level_hard_btn.png') no-repeat; background-position: 0 0; background-size: 100%; }
+.mainMenuBox .cutting_line{ height: 2px; background: url('img/cutting_line.png' ) no-repeat; background-position: center; background-size: auto; margin: 20px auto; }
+.mainMenuBox .startGame{  height: 56px; background: url('img/start_game_btn.png') no-repeat; background-size: 100%; }
