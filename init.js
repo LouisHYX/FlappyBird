@@ -42,6 +42,18 @@ let pipeImage = new Image(),// 创建水管图片
 	pipeImage.src = 'img/pipe_image.png',// 水管图片的路径
 	pipeBehaviors = [// 存储水管的所有行为
 		{
+	},
+	{// 控制小鸟上下运动
+		lastAdvance: 0,
+		PAGEFLIP_INTERVAL: 200,
+		execute: function(sprite, context, now){
+			// h += game.pixelsPerFrame(sprite.velocityY) + (sprite.velocityY * (game.gameTime / 1000));// 精灵当前这一帧所移动的像素 = 每米移动的像素 / 每秒播放的帧数
+			sprite.velocityY = G * (game.gameTime / 1000) * PIXELS_PER_METER;// 计算精灵的瞬时速度(像素 / 秒)
+			console.log(sprite.velocityY)
+		}
+	}
+];
+>>>>>>> 4348e621a0f3766fee3938c3fcf757c959082f86
 
 		},
 	],
