@@ -5,40 +5,47 @@ const CTX = CANVAS.getContext('2d');// 获取绘图环境
 CANVAS.setAttribute('width', window.screen.width/* * window.devicePixelRatio */ + 'px');
 CANVAS.setAttribute('height', window.screen.height/* * window.devicePixelRatio*/ + 'px');
 
-const G = 9.8;// 重力加速度
-const V = -100;// 单次点击给小鸟向上的初速度
-const SCREEN_HEIGHT_IN_METERS = 200;// 假设屏幕高度为实际米数
+const SCREEN_HEIGHT_IN_METERS = 100;// 假设屏幕高度为实际米数
 const PIXELS_PER_METER = CANVAS.height / SCREEN_HEIGHT_IN_METERS;// 设置1米等于多少像素
+const G_IN_GAME = 9.8 * PIXELS_PER_METER;// 游戏中重力加速度(像素 / 二次方秒)
+const V_UPWARD = -100;// 单次点击给小鸟向上的初速度(像素 / 秒)
 
 let game = new Game('FlappyBird', 'canvas');// 创建一个新游戏
 
 let birdSheet = new Image();// 创建新的玩家表
-	birdSheet.src = 'img/bird_sheet.png';// 玩家表的路径
-let birdCells = [{x:0, y:0, w:80, h:58},{x:80, y:0, w:80, h:58},{x:160, y:0, w:80, h:58},];// 玩家表每个图片的裁切位置
-let birdBehaviors = [// 存储小鸟的所有行为
-	{// 更新精灵表
-		lastAdvance: 0,
-		PAGEFLIP_INTERVAL: 200,
-		execute: function(sprite, context, now){
-			if( now - this.lastAdvance > this.PAGEFLIP_INTERVAL ){// 间隔固定时间切换精灵表中的下一张图片
-				sprite.painter.advance();// 更新精灵表中的图片位置
-				this.lastAdvance = now;
+	birdSheet.src = 'img/bird_sheet.png',// 玩家表的路径
+	birdCells = [{x:0, y:0, w:80, h:58},{x:80, y:0, w:80, h:58},{x:160, y:0, w:80, h:58},],// 玩家表每个图片的裁切位置
+	birdBehaviors = [// 存储小鸟的所有行为
+		{// 更新精灵表
+			lastAdvance: 0,
+			PAGEFLIP_INTERVAL: 200,
+			execute: function(sprite, context, now){
+				if( now - this.lastAdvance > this.PAGEFLIP_INTERVAL ){// 间隔固定时间切换精灵表中的下一张图片
+					sprite.painter.advance();// 更新精灵表中的图片位置
+					this.lastAdvance = now;
+				}
 			}
-		}
-	},
-	{// 控制小鸟上下运动
-		lastAdvance: 0,
-		PAGEFLIP_INTERVAL: 200,
-		execute: function(sprite, context, now){
-			// h += game.pixelsPerFrame(sprite.velocityY) + (sprite.velocityY * (game.gameTime / 1000));// 精灵当前这一帧所移动的像素 = 每米移动的像素 / 每秒播放的帧数
-			sprite.velocityY = G * (game.gameTime / 1000) * PIXELS_PER_METER;// 计算精灵的瞬时速度(像素 / 秒)
-			console.log(sprite.velocityY)
-		}
+		},
+		{// 控制小鸟上下运动
+			lastAdvance: 0,
+			PAGEFLIP_INTERVAL: 200,
+			execute: function(sprite, context, now){
+				sprite.top = sprite.topOrigin + sprite.velocityY * sprite.t + G_IN_GAME * Math.pow(sprite.t, 2) / 2;// 根据自由落体公式统一单位后计算小鸟的位置
+				sprite.t = sprite.t + 0.1;
+			}
 
-	}
-];
+		}
+	],
+	bird = new Sprite('bird', new SpriteSheetPainter(birdCells, birdSheet), birdBehaviors);// 创建小鸟
 
-let bird = new Sprite('bird', new SpriteSheetPainter(birdCells, birdSheet), birdBehaviors);// 创建小鸟
+let pipeImage = new Image(),// 创建水管图片
+	pipeImage.src = 'img/pipe_image.png',// 水管图片的路径
+	pipeBehaviors = [// 存储水管的所有行为
+		{
+
+		},
+	],
+	pipe = new Sprite('pipe', new ImagePainter(pipeImage.src), pipeBehaviors);// 创建水管
 
 let loadingInterval;// 创建loading页面加载定时器
 let loadingComplete = 0;// 创建loading页面加载定时器
@@ -85,8 +92,9 @@ game.queueImage('img/loading_text.png');
 
 //-----------------------添加精灵
 game.addSprite(bird);// 向游戏里添加小鸟
-bird.top = 100;// 小鸟初始离顶端位置
 bird.left = 70;// 小鸟初始离左端位置
+
+game.addSprite(pipe);// 向游戏里添加水管
 
 
 
@@ -100,8 +108,9 @@ startGame.addEventListener('click', function(e){
 	CANVAS.addEventListener('click', function(e){// 添加小鸟的点击事件
 		e.preventDefault();
 		e.stopPropagation();
-		h = 0;
-		bird.velocityY = -200;
+		bird.t = 0;
+		bird.topOrigin = bird.top;
+		bird.velocityY = V_UPWARD;
 	});
 });
 

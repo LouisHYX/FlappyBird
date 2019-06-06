@@ -4,7 +4,9 @@ let Sprite = function (name, painter, behaviors) {
 	if (name !== undefined) { this.name = name; }
 	if (painter !== undefined) { this.painter = painter; }
 
+	this.t = 0;
 	this.top = 0;
+	this.topOrigin = 100;
 	this.left = 0;
 	this.width = 10;
 	this.height = 10;
