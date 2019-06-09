@@ -12,10 +12,11 @@ const V_UPWARD = -100;// 单次点击给小鸟向上的初速度(像素 / 秒)
 
 let game = new Game('FlappyBird', 'canvas');// 创建一个新游戏
 
+//-----------------------创建玩家，玩家行为
 let birdSheet = new Image();// 创建新的玩家表
-	birdSheet.src = 'img/bird_sheet.png',// 玩家表的路径
-	birdCells = [{x:0, y:0, w:80, h:58},{x:80, y:0, w:80, h:58},{x:160, y:0, w:80, h:58},],// 玩家表每个图片的裁切位置
-	birdBehaviors = [// 存储小鸟的所有行为
+	birdSheet.src = 'img/bird_sheet.png';// 玩家表的路径
+let	birdCells = [{x:0, y:0, w:80, h:58},{x:80, y:0, w:80, h:58},{x:160, y:0, w:80, h:58},];// 玩家表每个图片的裁切位置
+let	birdBehaviors = [// 存储小鸟的所有行为
 		{// 更新精灵表
 			lastAdvance: 0,
 			PAGEFLIP_INTERVAL: 200,
@@ -35,30 +36,51 @@ let birdSheet = new Image();// 创建新的玩家表
 			}
 
 		}
-	],
-	bird = new Sprite('bird', new SpriteSheetPainter(birdCells, birdSheet), birdBehaviors);// 创建小鸟
+	];
+let	bird = new Sprite('bird', new SpriteSheetPainter(birdCells, birdSheet), birdBehaviors);// 创建小鸟
 
-let pipeImage = new Image(),// 创建水管图片
-	pipeImage.src = 'img/pipe_image.png',// 水管图片的路径
-	pipeBehaviors = [// 存储水管的所有行为
+//-----------------------创建水管，水管行为
+let pipes = new Array(0);// 二维数组，存储多组上下水管
+let pipeImageUpward = new Image();// 创建上水管图片
+	pipeImageUpward.src = 'img/pipe_upward.png';// 上水管图片的路径
+let pipeImageDownward = new Image();// 下创建水管图片
+	pipeImageDownward.src = 'img/pipe_downward.png';// 下水管图片的路径
+let	pipeBehaviors = [// 存储水管的所有行为
 		{
-	},
-	{// 控制小鸟上下运动
-		lastAdvance: 0,
-		PAGEFLIP_INTERVAL: 200,
-		execute: function(sprite, context, now){
-			// h += game.pixelsPerFrame(sprite.velocityY) + (sprite.velocityY * (game.gameTime / 1000));// 精灵当前这一帧所移动的像素 = 每米移动的像素 / 每秒播放的帧数
-			sprite.velocityY = G * (game.gameTime / 1000) * PIXELS_PER_METER;// 计算精灵的瞬时速度(像素 / 秒)
-			console.log(sprite.velocityY)
-		}
-	}
-];
->>>>>>> 4348e621a0f3766fee3938c3fcf757c959082f86
+			execute: function(){
 
+			}
 		},
-	],
-	pipe = new Sprite('pipe', new ImagePainter(pipeImage.src), pipeBehaviors);// 创建水管
+	];
+let	pipeUpward = new Sprite('pipeUpward', new ImagePainter(pipeImageUpward.src), pipeBehaviors);// 创建上水管
+let	pipeDownward = new Sprite('pipeDownward', new ImagePainter(pipeImageDownward.src), pipeBehaviors);// 创建下水管
 
+//-----------------------添加精灵
+game.addSprite(bird);// 向游戏里添加小鸟
+bird.left = 70;// 小鸟初始离左端位置
+
+game.paintOverSprites = function(){// 绘制水管
+	pipeUpward.width = 76;
+	pipeUpward.height = 294;
+	pipeUpward.left = 200;
+	pipeDownward.width = 76;
+	pipeDownward.height = 294;
+	pipeDownward.left = 100;
+
+	game.addSprite(pipeUpward);
+	game.addSprite(pipeDownward);
+};
+
+game.paintUnderSprites = function(){// 绘制背景
+
+};
+
+game.startAnimate = function(){// 游戏开始循环的条件以及另外的前置要求
+
+};
+
+
+//-----------------------loading页面相关
 let loadingInterval;// 创建loading页面加载定时器
 let loadingComplete = 0;// 创建loading页面加载定时器
 let birdFly = document.getElementById('birdFly');// 获取小鸟容器
@@ -67,6 +89,7 @@ let progressBarBox = document.getElementById('progressBarBox');// 获取进度�
 let progressBar = document.getElementById('progressBar');// 获取进度条当前进度
 let loadingText = document.getElementById('loadingText');// 获取当前进度百分比
 
+//-----------------------主菜单页面相关
 let mainMenuBox = document.getElementById('mainMenuBox');// 获取主菜单最外层盒子
 let easyLevel = document.getElementById('easyLevel');// 获取简单难度按钮
 let normalLevel = document.getElementById('normalLevel');// 获取中等难度按钮
@@ -74,6 +97,7 @@ let hardLevel = document.getElementById('hardLevel');// 获取困难难度按钮
 let startGame = document.getElementById('startGame');// 获取开始按钮
 
 //-----------------------图片加载
+game.queueImage('img/bg.png');
 game.queueImage('img/start_game_btn.png');
 game.queueImage('img/level_label.png');
 game.queueImage('img/level_easy_btn.png');
@@ -83,6 +107,8 @@ game.queueImage('img/cutting_line.png');
 game.queueImage('img/main_menu_bg.png');
 game.queueImage('img/bird_sheet.png');
 game.queueImage('img/loading_text.png');
+game.queueImage('img/pipe_downward.png');
+game.queueImage('img/pipe_upward.png');
 
 // loadingInterval = setInterval(function(){// 循环调用loadImages()方法加载图片
 // 	loadingComplete = game.loadImages();// 开始加载图片，返回完成百分比
@@ -102,11 +128,8 @@ game.queueImage('img/loading_text.png');
 // 	loadingText.innerText = loadingComplete.toFixed(0) + '%';// 显示当前进度百分比
 // }, 50);
 
-//-----------------------添加精灵
-game.addSprite(bird);// 向游戏里添加小鸟
-bird.left = 70;// 小鸟初始离左端位置
 
-game.addSprite(pipe);// 向游戏里添加水管
+
 
 
 
