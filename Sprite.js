@@ -42,7 +42,7 @@ let Pipes = function (name, painter, behaviors) {// 水管构造器继承自Spri
 	this.top = Math.floor(Math.random() * (0 - (-this.height)) + (-this.height));
 
 	// 一般情况下，下水管top值等于gap高度加上上水管在屏幕可见的高度,但如果下水管与屏幕下边缘产生间隙，则将下水管紧贴屏幕下边缘。
-	if(this.gap + (this.height - Math.abs(this.top)) + this.height >= window.screen.height ){
+	if( this.gap + (this.height - Math.abs(this.top)) + this.height >= window.screen.height ){
 		this.topUpward = this.gap + (this.height - Math.abs(this.top));
 	} else {
 		this.topUpward = window.screen.height - this.height;
