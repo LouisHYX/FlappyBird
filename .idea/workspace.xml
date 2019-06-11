@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容">
-      <change beforePath="$PROJECT_DIR$/FlappyBird.css" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlappyBird.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprite.js" beforeDir="false" afterPath="$PROJECT_DIR$/Sprite.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/pipe_downward.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/pipe_downward.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/pipe_upward.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/pipe_upward.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/init.js" afterDir="false" />
-    </list>
+    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -50,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3939">
-              <caret line="169" column="4" selection-start-line="169" selection-start-column="4" selection-end-line="169" selection-end-column="4" />
+            <state relative-caret-position="24">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -181,7 +174,7 @@
       <workItem from="1559738830043" duration="1327000" />
       <workItem from="1559825667454" duration="7640000" />
       <workItem from="1560053715265" duration="7676000" />
-      <workItem from="1560258365579" duration="4497000" />
+      <workItem from="1560258365579" duration="4513000" />
     </task>
     <task id="LOCAL-00001" summary="修改canvas标签中的文字内容">
       <created>1559469840805</created>
@@ -201,11 +194,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31943000" />
+    <option name="totallyTimeSpent" value="31959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="95" y="23" width="1873" height="1034" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.122570194" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -289,8 +281,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3939">
-          <caret line="169" column="4" selection-start-line="169" selection-start-column="4" selection-end-line="169" selection-end-column="4" />
+        <state relative-caret-position="24">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
