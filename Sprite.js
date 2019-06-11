@@ -37,11 +37,12 @@ let Pipes = function (name, painter, behaviors) {// 水管构造器继承自Spri
 	Sprite.call(this, name, painter, behaviors);// 继承Sprite的属性
 
 	this.width = 76;
-	this.height = 294;
+	this.height = 530;
+	this.left = window.screen.width;
 	this.gap = Math.floor(Math.random() * (200 - 100) + 100);// 上下水管之间的间距
 	this.top = Math.floor(Math.random() * (0 - (-this.height)) + (-this.height));
 
-	// 一般情况下，下水管top值等于gap高度加上上水管在屏幕可见的高度,但如果下水管与屏幕下边缘产生间隙，则将下水管紧贴屏幕下边缘。
+	// 一般情况下，下水管top值等于gap高度加上上水管在屏幕可见的高度,但如果下水管与屏幕下边界产生间隙，则将下水管紧贴屏幕下边界。
 	if( this.gap + (this.height - Math.abs(this.top)) + this.height >= window.screen.height ){
 		this.topUpward = this.gap + (this.height - Math.abs(this.top));
 	} else {
@@ -93,7 +94,7 @@ let SpriteSheetPainter = function (cells, spriteSheet) {
 SpriteSheetPainter.prototype = {
 	constructor: SpriteSheetPainter,
 	advance: function () {
-		if (this.cellIndex == this.cells.length - 1) {
+		if (this.cellIndex === this.cells.length - 1) {
 			this.cellIndex = 0;
 		} else {
 			this.cellIndex++;

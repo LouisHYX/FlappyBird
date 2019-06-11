@@ -47,15 +47,18 @@ let	pipeBehaviors = [// 存储水管的所有行为
 		{
 			execute: function(sprite, context, now){
 				if( game.level === 'normal' ){
-					sprite.left -= 2;	
+					sprite.left -= 3;
+					if( sprite.left + sprite.width < 0 ){// 如果水管已经移出左边界，则从allPipes中删除该组水管连同其index，不让数组长度无限制增加
+						allPipes.splice(0, 1);
+					}
 				}
 			}
 		},
 	];
 let allPipes = new Array(0);// 存储多组上下水管
-let pipes = new Pipes('pipes', new PipesPainter(pipeImageUpward.src, pipeImageDownward.src), pipeBehaviors)// 创建一组水管
-	pipes.left = 200;
-	allPipes.push(pipes);// 将水管组存入数组
+let pipes = {};// 保存一组水管
+let paintPipesInterval = 2000;// 绘制水管组的默认时间间隔
+let lastPaintPipes = 0;// 绘制上一组水管的时间
 
 //-----------------------创建背景，背景行为
 let bgImage = new Image();// 创建背景图片
@@ -84,7 +87,7 @@ let progressBar = document.getElementById('progressBar');// 获取进度条当�
 let loadingText = document.getElementById('loadingText');// 获取当前进度百分比
 
 //-----------------------主菜单页面相关
-let mainMenuBox = document.getElementById('mainMenuBox');// 获取主菜单最外层盒子
+let mainMenuBg = document.getElementById('mainMenuBg');// 获取主菜单背景
 let easyLevel = document.getElementById('easyLevel');// 获取简单难度按钮
 let normalLevel = document.getElementById('normalLevel');// 获取中等难度按钮
 let hardLevel = document.getElementById('hardLevel');// 获取困难难度按钮
@@ -127,10 +130,21 @@ game.addSprite(bg);// 向游戏里添加背景
 game.addSprite(bird);// 向游戏里添加小鸟
 
 game.paintOverSprites = function(time){// 绘制水管
+	if( time - lastPaintPipes > paintPipesInterval ){// 每隔一定时间绘制一组水管
+		pipes = new Pipes('pipes', new PipesPainter(pipeImageUpward.src, pipeImageDownward.src), pipeBehaviors);// 创建一组水管
+		allPipes.push(pipes);// 将水管组存入数组
+		lastPaintPipes = time;
+	}
+	console.log(allPipes.length);
+
 	for( let i = 0; i < allPipes.length; ++i ){
 		allPipes[i].update(CTX);// 随着游戏循环的进行，不断更新水管组左边距数值
 		allPipes[i].paint(CTX);// 具体绘制
 	}
+};
+
+game.collisionDetection = function(){// 实现小鸟与各个边界的碰撞
+
 };
 
 game.startAnimate = function(time){// 游戏开始循环的条件以及另外的限制条件
@@ -141,7 +155,7 @@ game.startAnimate = function(time){// 游戏开始循环的条件以及另外的
 startGame.addEventListener('click', function(e){
 	e.preventDefault();
 	e.stopPropagation();
-	mainMenuBox.style.display = 'none';// 隐藏主菜单
+	mainMenuBg.style.display = 'none';// 隐藏主菜单
 	game.start();// 开启游戏循环
 
 	CANVAS.addEventListener('click', function(e){// 添加小鸟的点击事件
