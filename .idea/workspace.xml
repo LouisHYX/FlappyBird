@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容" />
+    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容">
+      <change beforePath="$PROJECT_DIR$/FlappyBird.css" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlappyBird.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RequestNextAnimationFrame.js" beforeDir="false" afterPath="$PROJECT_DIR$/RequestNextAnimationFrame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprite.js" beforeDir="false" afterPath="$PROJECT_DIR$/Sprite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/bird_sheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/bird_sheet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/cutting_line.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/cutting_line.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/level_easy_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/level_easy_btn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/level_hard_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/level_hard_btn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/level_label.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/level_label.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/level_normal_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/level_normal_btn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/loading_text.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/loading_text.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/main_menu_bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/main_menu_bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pipe_downward.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/pipe_downward.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pipe_upward.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/pipe_upward.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/start_game_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/start_game_btn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -13,20 +34,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FlappyBird.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+            <state relative-caret-position="183">
+              <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="62" column="26" lean-forward="true" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+            <state relative-caret-position="226">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
@@ -34,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Sprite.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+            <state relative-caret-position="899">
+              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -43,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4729">
-              <caret line="282" column="16" selection-start-line="282" selection-start-column="4" selection-end-line="282" selection-end-column="16" />
+            <state relative-caret-position="8207">
+              <caret line="283" column="16" selection-start-line="283" selection-start-column="16" selection-end-line="283" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -52,14 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1643">
-              <caret line="41" column="17" lean-forward="true" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-              <folding>
-                <element signature="n#style#0;n#strong#0;n#!!top" expanded="true" />
-                <element signature="e#82#88#0" expanded="true" />
-                <element signature="e#88#94#0" expanded="true" />
-                <element signature="n#style#0;n#strong#2;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="1189">
+              <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -121,6 +136,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,7 +148,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -168,6 +183,7 @@
       <workItem from="1559738830043" duration="1327000" />
       <workItem from="1559825667454" duration="7640000" />
       <workItem from="1560053715265" duration="7676000" />
+      <workItem from="1560258365579" duration="121000" />
     </task>
     <task id="LOCAL-00001" summary="修改canvas标签中的文字内容">
       <created>1559469840805</created>
@@ -187,10 +203,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27446000" />
+    <option name="totallyTimeSpent" value="27567000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="92" y="23" width="1873" height="1034" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.122570194" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -238,44 +255,38 @@
     <entry file="file://$PROJECT_DIR$/img/cutting_line.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/FlappyBird.html">
+    <entry file="file://$PROJECT_DIR$/Sprite.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        <state relative-caret-position="899">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4729">
-          <caret line="282" column="16" selection-start-line="282" selection-start-column="4" selection-end-line="282" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Sprite.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        <state relative-caret-position="8207">
+          <caret line="283" column="16" selection-start-line="283" selection-start-column="16" selection-end-line="283" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1643">
-          <caret line="41" column="17" lean-forward="true" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-          <folding>
-            <element signature="n#style#0;n#strong#0;n#!!top" expanded="true" />
-            <element signature="e#82#88#0" expanded="true" />
-            <element signature="e#88#94#0" expanded="true" />
-            <element signature="n#style#0;n#strong#2;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="1189">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="62" column="26" lean-forward="true" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+        <state relative-caret-position="226">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FlappyBird.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
         </state>
       </provider>
     </entry>

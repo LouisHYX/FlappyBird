@@ -33,6 +33,43 @@ Sprite.prototype = {
 	}
 };
 
+let Pipes = function (name, painter, behaviors) {// 水管构造器继承自Sprite
+	Sprite.call(this, name, painter, behaviors);// 继承Sprite的属性
+
+	this.width = 76;
+	this.height = 294;
+	this.gap = Math.floor(Math.random() * (200 - 100) + 100);// 上下水管之间的间距
+	this.top = Math.floor(Math.random() * (0 - (-this.height)) + (-this.height));
+
+	// 一般情况下，下水管top值等于gap高度加上上水管在屏幕可见的高度,但如果下水管与屏幕下边缘产生间隙，则将下水管紧贴屏幕下边缘。
+	if(this.gap + (this.height - Math.abs(this.top)) + this.height >= window.screen.height ){
+		this.topUpward = this.gap + (this.height - Math.abs(this.top));
+	} else {
+		this.topUpward = window.screen.height - this.height;
+	}
+
+	return this;
+};
+
+Pipes.prototype = new Sprite();// 继承Sprite的方法
+
+let PipesPainter = function (imageUrlUpward, imageUrlDownward) {// 水管专用画笔
+	this.imageUpward = new Image();
+	this.imageDownward = new Image();
+	this.imageUpward.src = imageUrlUpward;
+	this.imageDownward.src = imageUrlDownward;
+};
+
+PipesPainter.prototype = {
+	constructor: PipesPainter,
+	paint: function (sprite, context) {
+		if (this.imageUpward.complete && this.imageDownward.complete) {
+			context.drawImage(this.imageDownward, sprite.left, sprite.top, sprite.width, sprite.height);
+			context.drawImage(this.imageUpward, sprite.left, sprite.topUpward, sprite.width, sprite.height);
+		}
+	}
+};
+
 let ImagePainter = function (imageUrl) {
 	this.image = new Image();
 	this.image.src = imageUrl;

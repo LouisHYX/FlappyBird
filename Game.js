@@ -13,6 +13,7 @@ let Game = function (gameName, canvasId) {
 	this.gameName = gameName;
 	this.sprites = [];
 	this.keyListeners = [];
+	this.level = 'normal';// 默认游戏难度
 
 	// 高分榜
 	this.HIGH_SCORES_SUFFIX = '_highscores';
@@ -112,7 +113,7 @@ Game.prototype = {
 			this.updateSprites(time);
 			this.paintSprites(time);
 
-			this.paintOverSprites();
+			this.paintOverSprites(time);
 			this.endAnimate();
 
 			window.requestNextAnimationFrame(function (time) {
@@ -282,8 +283,9 @@ Game.prototype = {
 	},
 	startAnimate: function (time) {},
 	paintUnderSprites: function () {},
-	paintOverSprites: function () {},
-	endAnimate: function () {}
+	paintOverSprites: function (time) {},
+	endAnimate: function () {},
+	collisionDetection: function () {}
 };
 
 

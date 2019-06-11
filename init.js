@@ -28,8 +28,6 @@ let	birdBehaviors = [// 存储小鸟的所有行为
 			}
 		},
 		{// 控制小鸟上下运动
-			lastAdvance: 0,
-			PAGEFLIP_INTERVAL: 200,
 			execute: function(sprite, context, now){
 				sprite.top = sprite.topOrigin + sprite.velocityY * sprite.t + G_IN_GAME * Math.pow(sprite.t, 2) / 2;// 根据自由落体公式统一单位后计算小鸟的位置
 				sprite.t = sprite.t + 0.1;
@@ -38,47 +36,43 @@ let	birdBehaviors = [// 存储小鸟的所有行为
 		}
 	];
 let	bird = new Sprite('bird', new SpriteSheetPainter(birdCells, birdSheet), birdBehaviors);// 创建小鸟
+	bird.left = 70;// 小鸟初始离左端位置
 
 //-----------------------创建水管，水管行为
-let pipes = new Array(0);// 二维数组，存储多组上下水管
-let pipeImageUpward = new Image();// 创建上水管图片
-	pipeImageUpward.src = 'img/pipe_upward.png';// 上水管图片的路径
-let pipeImageDownward = new Image();// 下创建水管图片
-	pipeImageDownward.src = 'img/pipe_downward.png';// 下水管图片的路径
+let pipeImageUpward = new Image();// 创建下水管图片
+	pipeImageUpward.src = 'img/pipe_upward.png';// 下水管图片的路径
+let pipeImageDownward = new Image();// 创建上水管图片
+	pipeImageDownward.src = 'img/pipe_downward.png';// 上水管图片的路径
 let	pipeBehaviors = [// 存储水管的所有行为
 		{
-			execute: function(){
-
+			execute: function(sprite, context, now){
+				if( game.level === 'normal' ){
+					sprite.left -= 2;	
+				}
 			}
 		},
 	];
-let	pipeUpward = new Sprite('pipeUpward', new ImagePainter(pipeImageUpward.src), pipeBehaviors);// 创建上水管
-let	pipeDownward = new Sprite('pipeDownward', new ImagePainter(pipeImageDownward.src), pipeBehaviors);// 创建下水管
+let allPipes = new Array(0);// 存储多组上下水管
+let pipes = new Pipes('pipes', new PipesPainter(pipeImageUpward.src, pipeImageDownward.src), pipeBehaviors)// 创建一组水管
+	pipes.left = 200;
+	allPipes.push(pipes);// 将水管组存入数组
 
-//-----------------------添加精灵
-game.addSprite(bird);// 向游戏里添加小鸟
-bird.left = 70;// 小鸟初始离左端位置
-
-game.paintOverSprites = function(){// 绘制水管
-	pipeUpward.width = 76;
-	pipeUpward.height = 294;
-	pipeUpward.left = 200;
-	pipeDownward.width = 76;
-	pipeDownward.height = 294;
-	pipeDownward.left = 100;
-
-	game.addSprite(pipeUpward);
-	game.addSprite(pipeDownward);
-};
-
-game.paintUnderSprites = function(){// 绘制背景
-
-};
-
-game.startAnimate = function(){// 游戏开始循环的条件以及另外的前置要求
-
-};
-
+//-----------------------创建背景，背景行为
+let bgImage = new Image();// 创建背景图片
+	bgImage.src = 'img/bg.png';// 背景的路径
+let	bgBehaviors = [// 存储背景的所有行为
+		{// 背景向左移动
+			execute: function(sprite, context, now){
+				sprite.left -= 0.5;
+				if( sprite.left <= -CANVAS.width ){// 在屏幕上循环播放背景
+					sprite.left = 0;
+				}
+			}
+		}
+	];
+let	bg = new Sprite('bg', new ImagePainter(bgImage.src), bgBehaviors);// 创建背景
+	bg.width = CANVAS.width * 2;
+	bg.height = CANVAS.height;
 
 //-----------------------loading页面相关
 let loadingInterval;// 创建loading页面加载定时器
@@ -128,10 +122,20 @@ game.queueImage('img/pipe_upward.png');
 // 	loadingText.innerText = loadingComplete.toFixed(0) + '%';// 显示当前进度百分比
 // }, 50);
 
+//-----------------------添加精灵以及实现引擎部分方法
+game.addSprite(bg);// 向游戏里添加背景
+game.addSprite(bird);// 向游戏里添加小鸟
 
+game.paintOverSprites = function(time){// 绘制水管
+	for( let i = 0; i < allPipes.length; ++i ){
+		allPipes[i].update(CTX);// 随着游戏循环的进行，不断更新水管组左边距数值
+		allPipes[i].paint(CTX);// 具体绘制
+	}
+};
 
-
-
+game.startAnimate = function(time){// 游戏开始循环的条件以及另外的限制条件
+	game.collisionDetection();// 碰撞检测
+};
 
 //-----------------------主菜单交互
 startGame.addEventListener('click', function(e){
