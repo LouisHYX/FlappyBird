@@ -1,18 +1,18 @@
 *{ padding: 0; margin: 0; border: none; overflow: hidden; }
 ul{ list-style: none; }
-html{ width: 100%; height: 100%; }
-
+html{ width: 100%; height: 100%; /*font-family: */ }
 
 /*loading页*/
 .loadingBackground{ display: none; background: white; width: 100%; height: 100%; position: absolute; top: 0; left: 0;}
-.loadingBox{ width: 60%; height: 300px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; }
-.birdFly{ width: 80px; height: 58px; margin: 40px auto; }
-.progressBarBox{ box-sizing: border-box; width: 100%; height: 40px; border: 4px solid #a4795d; }
-.progressBar{ width: 0; height: 32px; background: #a4795d; }
-.loadingText{ margin-top: 20px; font-size: 50px; color: #a4795d; font-family: Arial; }
+.loadingBox{ width: 60%; height: 30%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; }
+.birdFly{ width: 80px; height: 58px; margin: 20px auto; }
+.progressBarBox{ background: #faf0ea; width: 100%; height: 10px; }
+.progressBar{ width: 0; height: inherit; background: #a4795d; }
+.loadingText{ margin-top: 14px; font-size: 20px; color: #a4795d; font-family: Arial; }
 
 /*主菜单*/
-.mainMenuBg{ position: absolute; top: 0; background: url('img/bg.png') no-repeat; background-size: cover; width: 100%; height: 100%; }
+.mainMenuBox .cutting_line, .deadMenuBox .cutting_line{ width: 174px; height: 2px; background: url('img/cutting_line.png' ) no-repeat; background-size: 100%; margin: 20px auto; }
+.mainMenuBg{ /*display: none;*/ position: absolute; top: 0; background: url('img/bg.png') no-repeat; background-size: cover; width: 100%; height: 100%; }
 .mainMenuBox{ background: url('img/main_menu_bg.png') no-repeat; background-size: 100% 100%; width: 270px; height: 350px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box;}
 .mainMenuBox .levelLabel{ background: url('img/level_label.png') no-repeat; background-size: 100% 100%; width: 162px; height: 16px; margin: auto; margin-top: 12px; }
 .mainMenuBox ul li{ width: 156px; margin: 12px auto; }
@@ -20,5 +20,29 @@ html{ width: 100%; height: 100%; }
 .mainMenuBox .easyLevel{ background: url('img/level_easy_btn.png') no-repeat; background-position: 0 0; background-size: 100%; }
 .mainMenuBox .normalLevel{ background: url('img/level_normal_btn.png') no-repeat; background-position: 0 -48px; background-size: 100%; }
 .mainMenuBox .hardLevel{ background: url('img/level_hard_btn.png') no-repeat; background-position: 0 0; background-size: 100%; }
-.mainMenuBox .cutting_line{ height: 2px; background: url('img/cutting_line.png' ) no-repeat; background-position: center; background-size: auto; margin: 20px auto; }
-.mainMenuBox .startGame{  height: 56px; background: url('img/start_game_btn.png') no-repeat; background-size: 100%; }
+.mainMenuBox .startGame{  height: 56px; background: url('img/start_game_btn.png') no-repeat; background-position: 0 0; background-size: 100%; }
+
+/*得分面板*/
+.scoresBoardBox{ display: none; background: rgba(0, 0, 0, 0.6); position: fixed; right: 10px; bottom: 6px; color: white; font-size: 12px; padding: 4px 14px; box-sizing: border-box; }
+.scoresTitle{ float: left; margin: 9px 7px 0 0; letter-spacing: 1px; }
+.scores{ float: right; font-size: 22px; letter-spacing: 1px; }
+
+/*设置*/
+.setting{ width: 40px; height: 40px; position: fixed; right: 10px; top: 10px; background: url('img/setting.png') no-repeat; background-position: 0 0; background-size: 100%; }
+
+/*设置菜单*/
+/*.settingMenuBg{ display: none; position: absolute; top: 0; background: rgba(0, 0, 0, 0.6); width: 100%; height: 100%; }
+.settingMenuBox{ background: url('img/setting_menu_bg.png') no-repeat; background-size: 100% 100%; width: 270px; height: 190px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box; }
+.settingMenuBox ul li{ width: 156px; height: 56px; margin: 12px auto; }
+.settingMenuBox .continueGame{ background: url('img/continue_game_btn.png') no-repeat; background-position: 0 0; background-size: 100%; }
+.settingMenuBox .exitGame{ background: url('img/exit_game_btn.png') no-repeat; background-position: 0 0; background-size: 100%; }*/
+
+/*死亡菜单*/
+.deadMenuBg{ display: none; position: absolute; top: 0; background: rgba(0, 0, 0, 0.6); width: 100%; height: 100%; }
+.deadMenuBox{ background: url('img/main_menu_bg.png') no-repeat; background-size: 100% 100%; width: 270px; height: 350px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box; }
+.deadMenuBox .scoresLabel{ background: url('img/scores_label.png') no-repeat; background-size: 100% 100%; width: 162px; height: 16px; margin: auto; margin-top: 12px; }
+.deadMenuBox .finalScores{ margin: auto; margin-top: 12px; }
+.deadMenuBox ul li{ width: 156px; margin: 12px auto; }
+.deadMenuBox .restartGame{ background: url('img/restart_game_btn.png') no-repeat; background-position: 0 0; background-size: 100%; height: 56px; }
+.deadMenuBox .goMainMenu{ background: url('img/go_main_menu_btn.png') no-repeat; background-position: 0 0; background-size: 100%; height: 56px; }
+.deadMenuBox .exitGame{ background: url('img/exit_game_btn.png') no-repeat; background-position: 0 0; background-size: 100%; height: 56px; }

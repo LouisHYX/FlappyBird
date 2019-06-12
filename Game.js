@@ -14,8 +14,10 @@ let Game = function (gameName, canvasId) {
 	this.sprites = [];
 	this.keyListeners = [];
 	this.level = 'normal';// 默认游戏难度
+	;
 
 	// 高分榜
+	this.scores = 0;// 当前得分
 	this.HIGH_SCORES_SUFFIX = '_highscores';
 
 	// 图像加载
@@ -48,8 +50,8 @@ let Game = function (gameName, canvasId) {
 		this.soundChannels.push(audio);
 	}
 
-	window.onkeypress = function (e) { self.keyPressed(e); };
-	window.onkeydown = function (e) { self.keyPressed(e); };
+	// window.onkeypress = function (e) { self.keyPressed(e); };
+	// window.onkeydown = function (e) { self.keyPressed(e); };
 
 	return this;
 };
@@ -92,7 +94,7 @@ Game.prototype = {
 		let self = this;
 		this.startTime = getTimeNow();
 
-		window.requestNextAnimationFrame(function (time) {
+		 window.requestNextAnimationFrame(function (time) {
 			self.animate.call(self, time);
 		});
 	},
@@ -187,16 +189,6 @@ Game.prototype = {
 		localStorage[this.gameName + this.HIGH_SCORES_SUFFIX] = JSON.stringify([]);
 	},
 
-	// 触摸事件
-	touchEvent: function (e) {
-
-	},
-
-	// 鼠标点击事件
-	mouseClick: function (e) {
-
-	},
-
 	// 键盘事件
 	addKeyListener: function (keyAndListener) {
 		this.keyListeners.push(keyAndListener);
@@ -285,7 +277,9 @@ Game.prototype = {
 	paintUnderSprites: function () {},
 	paintOverSprites: function (time) {},
 	endAnimate: function () {},
-	collisionDetection: function () {}
+	collisionDetection: function () {},
+	gameOver: function (time) {},
+	playerDeadAnimation: function () {}
 };
 
 

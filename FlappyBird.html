@@ -10,14 +10,47 @@
 	<!-- 画布 -->
 	<canvas id="canvas">请升级您的浏览器版本以支持该游戏</canvas>
 
+	<!-- 得分面板 -->
+	<aside class="scoresBoardBox" id="scoresBoardBox">
+		<h4 class="scoresTitle">得分</h4>
+		<span class="scores" id="scores">0</span>
+	</aside>
+
+	<!-- 设置 -->
+	<!-- <div class="setting" id="setting"></div> -->
+
+	<!-- 设置菜单 -->
+	<!-- <aside class="settingMenuBg" id="settingMenuBg">
+		<div class="settingMenuBox">
+			<ul>
+				<li class="continueGame" id="continueGame"></li>
+				<li class="exitGame" id="exitGame"></li>
+			</ul>
+		</div>
+	</aside> -->
+
+	<!-- 死亡菜单 -->
+	<aside class="deadMenuBg" id="deadMenuBg">
+		<div class="deadMenuBox">
+			<h4 class="scoresLabel"></h4>
+			<span class="finalScores" id="finalScores"></span>
+			<ul>
+				<li class="cutting_line"></li>
+				<li class="restartGame" id="restartGame"></li>
+				<li class="goMainMenu" id="goMainMenu"></li>
+				<li class="exitGame" id="exitGame"></li>
+			</ul>
+		</div>
+	</aside>
+
 	<!-- 主菜单 -->
 	<aside class="mainMenuBg" id="mainMenuBg">
 		<div class="mainMenuBox">
 			<h4 class="levelLabel"></h4>
 			<ul>
-				<li class="levelButton easyLevel" id="easyLevel" data-selected="0" data-level="easy"></li>
-				<li class="levelButton normalLevel" id="normalLevel" data-selected="1" data-level="normal"></li>
-				<li class="levelButton hardLevel" id="hardLevel" data-selected="0" data-level="hard"></li>
+				<li class="levelButton easyLevel" id="easyLevel" data-selected="0"></li>
+				<li class="levelButton normalLevel" id="normalLevel" data-selected="1"></li>
+				<li class="levelButton hardLevel" id="hardLevel" data-selected="0"></li>
 				<li class="cutting_line"></li>
 				<li class="startGame" id="startGame"></li>
 			</ul>

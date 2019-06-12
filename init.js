@@ -30,9 +30,8 @@ let	birdBehaviors = [// 存储小鸟的所有行为
 		{// 控制小鸟上下运动
 			execute: function(sprite, context, now){
 				sprite.top = sprite.topOrigin + sprite.velocityY * sprite.t + G_IN_GAME * Math.pow(sprite.t, 2) / 2;// 根据自由落体公式统一单位后计算小鸟的位置
-				sprite.t = sprite.t + 0.1;
+				sprite.t += 0.1;
 			}
-
 		}
 	];
 let	bird = new Sprite('bird', new SpriteSheetPainter(birdCells, birdSheet), birdBehaviors);// 创建小鸟
@@ -46,12 +45,18 @@ let pipeImageDownward = new Image();// 创建上水管图片
 let	pipeBehaviors = [// 存储水管的所有行为
 		{
 			execute: function(sprite, context, now){
+				if( game.level === 'easy' ){
+					sprite.left -= 2;
+				}
 				if( game.level === 'normal' ){
 					sprite.left -= 3;
-					if( sprite.left + sprite.width < 0 ){// 如果水管已经移出左边界，则从allPipes中删除该组水管连同其index，不让数组长度无限制增加
+				}
+				if( game.level === 'hard' ){
+					sprite.left -= 4;	
+				}
+				if( sprite.left + sprite.width < 0 ){// 如果水管已经移出左边界，则从allPipes中删除该组水管连同其index，不让数组长度无限制增加
 						allPipes.splice(0, 1);
 					}
-				}
 			}
 		},
 	];
@@ -66,7 +71,15 @@ let bgImage = new Image();// 创建背景图片
 let	bgBehaviors = [// 存储背景的所有行为
 		{// 背景向左移动
 			execute: function(sprite, context, now){
-				sprite.left -= 0.5;
+				if( game.level === 'easy' ){
+					sprite.left -= 0.2;
+				}
+				if( game.level === 'normal' ){
+					sprite.left -= 0.3;
+				}
+				if( game.level === 'hard' ){
+					sprite.left -= 0.4;
+				}
 				if( sprite.left <= -CANVAS.width ){// 在屏幕上循环播放背景
 					sprite.left = 0;
 				}
@@ -80,6 +93,7 @@ let	bg = new Sprite('bg', new ImagePainter(bgImage.src), bgBehaviors);// 创建�
 //-----------------------loading页面相关
 let loadingInterval;// 创建loading页面加载定时器
 let loadingComplete = 0;// 创建loading页面加载定时器
+let loadingBackground = document.getElementById('loadingBackground');// 获取loading页外盒子
 let birdFly = document.getElementById('birdFly');// 获取小鸟容器
 let clipX = 0;// 小鸟图片裁切X值(backgroundPosition样式)
 let progressBarBox = document.getElementById('progressBarBox');// 获取进度条
@@ -92,6 +106,23 @@ let easyLevel = document.getElementById('easyLevel');// 获取简单难度按钮
 let normalLevel = document.getElementById('normalLevel');// 获取中等难度按钮
 let hardLevel = document.getElementById('hardLevel');// 获取困难难度按钮
 let startGame = document.getElementById('startGame');// 获取开始按钮
+
+//-----------------------游戏界面相关
+let scoresBoardBox = document.getElementById('scoresBoardBox');// 获取得分面板外框
+let scores = document.getElementById('scores');// 获取得分显示框
+
+//-----------------------设置菜单
+// let setting = document.getElementById('setting');// 获取设置按钮
+// let settingMenuBg = document.getElementById('settingMenuBg');// 获取设置菜单背景
+// let continueGame = document.getElementById('continueGame');// 获取继续按钮
+// let exitGame = document.getElementById('exitGame');// 获取退出按钮
+
+//-----------------------死亡菜单
+let deadMenuBg = document.getElementById('deadMenuBg');// 获取死亡菜单背景
+let restartGame = document.getElementById('restartGame');// 获取重玩按钮
+let goMainMenu = document.getElementById('goMainMenu');// 获取跳转主菜单按钮
+let exitGame = document.getElementById('exitGame');// 获取退出按钮
+let deadAnimationTimer;// 创建死亡动画定时器
 
 //-----------------------图片加载
 game.queueImage('img/bg.png');
@@ -106,6 +137,12 @@ game.queueImage('img/bird_sheet.png');
 game.queueImage('img/loading_text.png');
 game.queueImage('img/pipe_downward.png');
 game.queueImage('img/pipe_upward.png');
+game.queueImage('img/setting.png');
+game.queueImage('img/restart_game_btn.png');
+game.queueImage('img/exit_game_btn.png');
+game.queueImage('img/setting_menu_bg.png');
+game.queueImage('img/continue_game_btn.png');
+game.queueImage('img/scores_label.png');
 
 // loadingInterval = setInterval(function(){// 循环调用loadImages()方法加载图片
 // 	loadingComplete = game.loadImages();// 开始加载图片，返回完成百分比
@@ -113,7 +150,8 @@ game.queueImage('img/pipe_upward.png');
 // 	if(loadingComplete === 100){// 加载完毕，可能有加载失败的图片
 // 		clearInterval(loadingInterval);
 // 		setTimeout(function(){// 0.5秒后关闭loading页
-// 			document.getElementById('loadingBackground').style.display = 'none';// 关闭loading页
+// 			loadingBackground.style.display = 'none';// 关闭loading页
+// 			mainMenuBg.style.display = 'block';// 显示主菜单
 // 		}, 1200);
 // 	}
 	
@@ -121,8 +159,8 @@ game.queueImage('img/pipe_upward.png');
 // 	clipX = (clipX % 80) < 3 ? clipX : 0;
 // 	clipX++;
 // 	birdFly.style.backgroundPosition = (clipX % 80) * 80 + 'px 0px';// 裁切
-// 	progressBar.style.width = (loadingComplete / 100) * progressBarBox.offsetWidth - 8 + 'px';// 显示进度条当前进度
-// 	loadingText.innerText = loadingComplete.toFixed(0) + '%';// 显示当前进度百分比
+// 	progressBar.style.width = (loadingComplete / 100) * progressBarBox.offsetWidth + 'px';// 显示进度条当前进度
+// 	loadingText.innerText = '资源加载中...' + loadingComplete.toFixed(0) + '%';// 显示当前进度百分比
 // }, 50);
 
 //-----------------------添加精灵以及实现引擎部分方法
@@ -135,7 +173,6 @@ game.paintOverSprites = function(time){// 绘制水管
 		allPipes.push(pipes);// 将水管组存入数组
 		lastPaintPipes = time;
 	}
-	console.log(allPipes.length);
 
 	for( let i = 0; i < allPipes.length; ++i ){
 		allPipes[i].update(CTX);// 随着游戏循环的进行，不断更新水管组左边距数值
@@ -144,28 +181,170 @@ game.paintOverSprites = function(time){// 绘制水管
 };
 
 game.collisionDetection = function(){// 实现小鸟与各个边界的碰撞
+	//------------小鸟与水管碰撞
+	for( let i = 0; i < allPipes.length; ++i ){
+		if( allPipes[i].left <= bird.left + bird.width && allPipes[i].left + allPipes[i].width > bird.left ){
+			if( allPipes[i].height - Math.abs(allPipes[i].top) > bird.top || allPipes[i].height - Math.abs(allPipes[i].top) + allPipes[i].gap < bird.top + bird.height ){
+				game.paused = true;// 游戏暂停
+				game.playerDeadAnimation()// 小鸟死亡动画
+			}
+		} else if( allPipes[i].left + allPipes[i].width === bird.left ){// 如果小鸟顺利通过水管，则得分
+			game.scores += 10;
+			scores.innerText = parseInt(scores.innerText) + 10;
+		}
+	}
 
+	//------------小鸟飞太低
+	if( bird.top > CANVAS.height ){
+		game.paused = true;// 游戏暂停
+		deadMenuBg.style.display = 'block';// 弹出游戏菜单
+	}
+};
+
+game.playerDeadAnimation = function(){// 小鸟死亡动画
+	// 创建死亡的小鸟
+	let deadBird = document.createElement('div');
+	let deadBird_v = -100
+	let deadBird_t = 0;
+	let deadBird_top = bird.top + 'px';// 死亡小鸟原始top值
+	deadBird.style.width = bird.width + 'px';
+	deadBird.style.height = bird.height + 'px';
+	deadBird.style.background = "black";
+	deadBird.style.position = "absolute";
+	deadBird.style.top = bird.top + 'px';
+	deadBird.style.left = bird.left + 'px';
+	document.body.appendChild(deadBird);
+
+	bird.visible = false;// 隐藏原始小鸟
+
+	deadAnimationTimer = setInterval(function(){// 播放死亡动画
+
+		deadBird.style.top = parseInt(deadBird_top) + deadBird_v * deadBird_t + G_IN_GAME * Math.pow(deadBird_t, 2) / 2 + 'px';// 根据自由落体公式统一单位后计算小鸟的位置
+		deadBird_v += 1;
+		deadBird_t += 0.2;
+
+		if( deadBird.offsetTop > CANVAS.height ){// 小鸟飞出屏幕，显示菜单
+			deadMenuBg.style.display = 'block';// 弹出游戏菜单
+			clearInterval(deadAnimationTimer);// 清除该定时器
+			document.body.removeChild(deadBird);// 删除死亡的小鸟
+		}
+	}, 30);
 };
 
 game.startAnimate = function(time){// 游戏开始循环的条件以及另外的限制条件
 	game.collisionDetection();// 碰撞检测
 };
 
-//-----------------------主菜单交互
-startGame.addEventListener('click', function(e){
-	e.preventDefault();
+game.gameOver = function(time){// 游戏结束需要的重置操作
+
+	// time = game.startTime;
+
+	// 得分重置
+	game.scores = 0;
+
+	// 游戏时间相关重置
+	game.paused = false;
+	game.startTime = 0;
+	game.lastTime = 0;
+	game.gameTime = 0;
+	game.fps = 0;
+	game.STARTING_FPS = 60;
+	game.startedPauseAt = 0;
+	game.PAUSED_TIMEOUT = 100;
+
+	// 小鸟数值重置
+	bird.top = 0;
+	bird.topOrigin = 100;
+	bird.t = 0;
+	bird.velocityY = 0;
+	bird.visible = true;
+
+	// 水管数据重置
+	allPipes.splice(0, allPipes.length);
+	pipes = {};
+	lastPaintPipes = 0;
+
+
+};
+
+//-----------------------菜单交互
+startGame.onclick = function(e){
 	e.stopPropagation();
+
+	// 重置游戏数值
+	game.gameOver();
+
 	mainMenuBg.style.display = 'none';// 隐藏主菜单
+	scoresBoardBox.style.display = 'block';// 显示得分面板
 	game.start();// 开启游戏循环
 
-	CANVAS.addEventListener('click', function(e){// 添加小鸟的点击事件
-		e.preventDefault();
+	// 玩家选择不同难度，水管绘制时间间隔不同
+	if( game.level === 'easy' ){
+		paintPipesInterval = 3000;
+	}
+
+	if( game.level === 'hard' ){
+		paintPipesInterval = 1200;
+	}
+
+	CANVAS.onclick = function(e){// 添加小鸟的点击事件
 		e.stopPropagation();
-		bird.t = 0;
-		bird.topOrigin = bird.top;
-		bird.velocityY = V_UPWARD;
-	});
-});
+		if( !game.paused ){// 如果游戏没有停止，则可以点击
+			bird.t = 0;
+			bird.topOrigin = bird.top;
+			if( bird.top > 0 ){// 如果飞太高，则不能让他过多的超出上边界
+				bird.velocityY = V_UPWARD;
+			} else {
+				bird.velocityY = 0;
+			}
+		}
+	};
+};
+
+easyLevel.onclick = function(e){
+	e.stopPropagation();
+	normalLevel.style.backgroundPosition = '0 0';
+	hardLevel.style.backgroundPosition = '0 0';
+	easyLevel.style.backgroundPosition = '0 -48px';
+	game.level = 'easy';
+};
+
+normalLevel.onclick = function(e){
+	e.stopPropagation();
+	easyLevel.style.backgroundPosition = '0 0';
+	hardLevel.style.backgroundPosition = '0 0';
+	normalLevel.style.backgroundPosition = '0 -48px';
+	game.level = 'normal';
+};
+
+hardLevel.onclick = function(e){
+	e.stopPropagation();
+	easyLevel.style.backgroundPosition = '0 0';
+	normalLevel.style.backgroundPosition = '0 0';
+	hardLevel.style.backgroundPosition = '0 -48px';
+	game.level = 'hard';
+};
+
+restartGame.onclick = function(e){
+	e.stopPropagation();
+	deadMenuBg.style.display = 'none';// 关闭当前菜单
+	game.gameOver();
+};
+
+goMainMenu.onclick = function(e){
+	e.stopPropagation();
+	deadMenuBg.style.display = 'none';// 关闭当前菜单
+	mainMenuBg.style.display = 'block';// 打开主菜单
+};
+
+exitGame.onclick = function(e){
+	e.stopPropagation();
+	window.opener = null;
+	window.open('', '_self');
+	window.close();
+};
+
+
 
 
 
