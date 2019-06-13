@@ -8,18 +8,18 @@ CANVAS.setAttribute('height', window.screen.height/* * window.devicePixelRatio*/
 const SCREEN_HEIGHT_IN_METERS = 100;// 假设屏幕高度为实际米数
 const PIXELS_PER_METER = CANVAS.height / SCREEN_HEIGHT_IN_METERS;// 设置1米等于多少像素
 const G_IN_GAME = 9.8 * PIXELS_PER_METER;// 游戏中重力加速度(像素 / 二次方秒)
-const V_UPWARD = -100;// 单次点击给小鸟向上的初速度(像素 / 秒)
+const V_UPWARD = -80;// 单次点击给小鸟向上的初速度(像素 / 秒)
 
 let game = new Game('FlappyBird', 'canvas');// 创建一个新游戏
 
 //-----------------------创建玩家，玩家行为
 let birdSheet = new Image();// 创建新的玩家表
 	birdSheet.src = 'img/bird_sheet.png';// 玩家表的路径
-let	birdCells = [{x:0, y:0, w:80, h:58},{x:80, y:0, w:80, h:58},{x:160, y:0, w:80, h:58},];// 玩家表每个图片的裁切位置
+let	birdCells = [{x:0, y:0, w:52, h:52},{x:52, y:0, w:52, h:52},{x:104, y:0, w:52, h:52},{x:156, y:0, w:52, h:52},{x:208, y:0, w:52, h:52},{x:260, y:0, w:52, h:52}];// 玩家表每个图片的裁切位置
 let	birdBehaviors = [// 存储小鸟的所有行为
 		{// 更新精灵表
 			lastAdvance: 0,
-			PAGEFLIP_INTERVAL: 200,
+			PAGEFLIP_INTERVAL: 140,
 			execute: function(sprite, context, now){
 				if( now - this.lastAdvance > this.PAGEFLIP_INTERVAL ){// 间隔固定时间切换精灵表中的下一张图片
 					sprite.painter.advance();// 更新精灵表中的图片位置
@@ -134,6 +134,7 @@ game.queueImage('img/level_hard_btn.png');
 game.queueImage('img/cutting_line.png');
 game.queueImage('img/main_menu_bg.png');
 game.queueImage('img/bird_sheet.png');
+game.queueImage('img/deadbird_sheet.png');
 game.queueImage('img/loading_text.png');
 game.queueImage('img/pipe_downward.png');
 game.queueImage('img/pipe_upward.png');
@@ -149,7 +150,7 @@ game.queueImage('img/scores_label.png');
 
 // 	if(loadingComplete === 100){// 加载完毕，可能有加载失败的图片
 // 		clearInterval(loadingInterval);
-// 		setTimeout(function(){// 0.5秒后关闭loading页
+// 		setTimeout(function(){// 一定时间后关闭loading页
 // 			loadingBackground.style.display = 'none';// 关闭loading页
 // 			mainMenuBg.style.display = 'block';// 显示主菜单
 // 		}, 1200);
@@ -184,7 +185,7 @@ game.collisionDetection = function(){// 实现小鸟与各个边界的碰撞
 	//------------小鸟与水管碰撞
 	for( let i = 0; i < allPipes.length; ++i ){
 		if( allPipes[i].left <= bird.left + bird.width && allPipes[i].left + allPipes[i].width > bird.left ){
-			if( allPipes[i].height - Math.abs(allPipes[i].top) > bird.top || allPipes[i].height - Math.abs(allPipes[i].top) + allPipes[i].gap < bird.top + bird.height ){
+			if( allPipes[i].height - Math.abs(allPipes[i].top) > bird.top + bird.blankHeight || allPipes[i].height - Math.abs(allPipes[i].top) + allPipes[i].gap < bird.top + bird.height - bird.blankHeight ){
 				game.paused = true;// 游戏暂停
 				game.playerDeadAnimation()// 小鸟死亡动画
 			}
@@ -197,38 +198,52 @@ game.collisionDetection = function(){// 实现小鸟与各个边界的碰撞
 	//------------小鸟飞太低
 	if( bird.top > CANVAS.height ){
 		game.paused = true;// 游戏暂停
-		deadMenuBg.style.display = 'block';// 弹出游戏菜单
+		setTimeout(function(){
+			deadMenuBg.style.display = 'block';// 弹出游戏菜单
+		} ,500);
 	}
 };
 
 game.playerDeadAnimation = function(){// 小鸟死亡动画
 	// 创建死亡的小鸟
 	let deadBird = document.createElement('div');
-	let deadBird_v = -100
+	let deadBird_v = -140;
 	let deadBird_t = 0;
 	let deadBird_top = bird.top + 'px';// 死亡小鸟原始top值
-	deadBird.style.width = bird.width + 'px';
-	deadBird.style.height = bird.height + 'px';
-	deadBird.style.background = "black";
-	deadBird.style.position = "absolute";
+	deadBird.style.width = '56px';
+	deadBird.style.height = '52px';
+	deadBird.style.background = 'url("img/deadbird_sheet.png")';
+	deadBird.style.backgroundPosition = '0 0';
+	deadBird.style.position = 'absolute';
 	deadBird.style.top = bird.top + 'px';
 	deadBird.style.left = bird.left + 'px';
 	document.body.appendChild(deadBird);
 
 	bird.visible = false;// 隐藏原始小鸟
 
-	deadAnimationTimer = setInterval(function(){// 播放死亡动画
+	setTimeout(function(){
+		deadAnimationTimer = setInterval(function(){// 播放死亡动画
 
-		deadBird.style.top = parseInt(deadBird_top) + deadBird_v * deadBird_t + G_IN_GAME * Math.pow(deadBird_t, 2) / 2 + 'px';// 根据自由落体公式统一单位后计算小鸟的位置
-		deadBird_v += 1;
-		deadBird_t += 0.2;
+			deadBird.style.top = parseInt(deadBird_top) + deadBird_v * deadBird_t + G_IN_GAME * Math.pow(deadBird_t, 2) / 2 + 'px';// 根据自由落体公式统一单位后计算死亡小鸟的位置
+			deadBird_v += 1;
+			deadBird_t += 0.2;
 
-		if( deadBird.offsetTop > CANVAS.height ){// 小鸟飞出屏幕，显示菜单
-			deadMenuBg.style.display = 'block';// 弹出游戏菜单
-			clearInterval(deadAnimationTimer);// 清除该定时器
-			document.body.removeChild(deadBird);// 删除死亡的小鸟
-		}
-	}, 30);
+			if( deadBird_t <= 2 ){
+				deadBird.style.backgroundPosition = '112px 0';
+			} else if( deadBird_t > 2 ) {
+				deadBird.style.backgroundPosition = '56px 0';
+			}
+
+			if( deadBird.offsetTop > CANVAS.height ){// 小鸟飞出屏幕后，间隔一定时间显示菜单
+				document.body.removeChild(deadBird);// 删除死亡的小鸟
+				clearInterval(deadAnimationTimer);// 清除该定时器
+				setTimeout(function(){
+					deadMenuBg.style.display = 'block';// 弹出游戏菜单
+				} ,500);
+			}
+		}, 30);
+	}, 500);
+	
 };
 
 game.startAnimate = function(time){// 游戏开始循环的条件以及另外的限制条件
