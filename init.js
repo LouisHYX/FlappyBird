@@ -99,6 +99,7 @@ let clipX = 0;// 小鸟图片裁切X值(backgroundPosition样式)
 let progressBarBox = document.getElementById('progressBarBox');// 获取进度条
 let progressBar = document.getElementById('progressBar');// 获取进度条当前进度
 let loadingText = document.getElementById('loadingText');// 获取当前进度百分比
+let bifrFlyOrient = 'upward';// 小鸟飞行方向['upward', 'downward']
 
 //-----------------------主菜单页面相关
 let mainMenuBg = document.getElementById('mainMenuBg');// 获取主菜单背景
@@ -106,6 +107,9 @@ let easyLevel = document.getElementById('easyLevel');// 获取简单难度按钮
 let normalLevel = document.getElementById('normalLevel');// 获取中等难度按钮
 let hardLevel = document.getElementById('hardLevel');// 获取困难难度按钮
 let startGame = document.getElementById('startGame');// 获取开始按钮
+let menuShow = false;// 主菜单是否显示
+let mainMenuBgMoveTimer = undefined;// 主菜单背景运动计时器
+let mainMenuBgMoveStep = 0;// 主菜单背景运动步长
 
 //-----------------------游戏界面相关
 let scoresBoardBox = document.getElementById('scoresBoardBox');// 获取得分面板外框
@@ -122,7 +126,7 @@ let deadMenuBg = document.getElementById('deadMenuBg');// 获取死亡菜单背�
 let restartGame = document.getElementById('restartGame');// 获取重玩按钮
 let goMainMenu = document.getElementById('goMainMenu');// 获取跳转主菜单按钮
 let exitGame = document.getElementById('exitGame');// 获取退出按钮
-let deadAnimationTimer;// 创建死亡动画定时器
+let deadAnimationTimer = undefined;// 创建死亡动画定时器
 
 //-----------------------图片加载
 game.queueImage('img/bg.png');
@@ -145,24 +149,53 @@ game.queueImage('img/setting_menu_bg.png');
 game.queueImage('img/continue_game_btn.png');
 game.queueImage('img/scores_label.png');
 
-// loadingInterval = setInterval(function(){// 循环调用loadImages()方法加载图片
-// 	loadingComplete = game.loadImages();// 开始加载图片，返回完成百分比
+loadingInterval = setInterval(function(){// 循环调用loadImages()方法加载图片
+	loadingComplete = game.loadImages();// 开始加载图片，返回完成百分比
 
-// 	if(loadingComplete === 100){// 加载完毕，可能有加载失败的图片
-// 		clearInterval(loadingInterval);
-// 		setTimeout(function(){// 一定时间后关闭loading页
-// 			loadingBackground.style.display = 'none';// 关闭loading页
-// 			mainMenuBg.style.display = 'block';// 显示主菜单
-// 		}, 1200);
-// 	}
-	
-// 	birdFly.style.backgroundImage = "url('img/bird_sheet.png')";// 显示小鸟飞翔
-// 	clipX = (clipX % 80) < 3 ? clipX : 0;
-// 	clipX++;
-// 	birdFly.style.backgroundPosition = (clipX % 80) * 80 + 'px 0px';// 裁切
-// 	progressBar.style.width = (loadingComplete / 100) * progressBarBox.offsetWidth + 'px';// 显示进度条当前进度
-// 	loadingText.innerText = '资源加载中...' + loadingComplete.toFixed(0) + '%';// 显示当前进度百分比
-// }, 50);
+	if(loadingComplete === 100){// 加载完毕，可能有加载失败的图片
+		clearInterval(loadingInterval);
+		setTimeout(function(){// 一定时间后关闭loading页
+			loadingBackground.style.display = 'none';// 关闭loading页
+			mainMenuBg.style.display = 'block';// 显示主菜单
+			menuShow = true;
+			mainMenuBgMoveTimer = setInterval(mainMenuBgMove , 1000 / 60);// 主菜单背景开始运动
+		}, 1200);
+	}
+
+	birdFly.style.backgroundImage = "url('img/bird_sheet.png')";// 显示小鸟飞翔
+
+	//loading页小鸟上下运动
+	if( bifrFlyOrient === 'upward' ){
+		birdFly.style.top = birdFly.offsetTop - 3 + 'px';
+		if( birdFly.offsetTop < 22 ){
+			bifrFlyOrient = 'downward';
+		}
+	} else if( bifrFlyOrient === 'downward' ) {
+		birdFly.style.top = birdFly.offsetTop + 3 + 'px';
+		if( birdFly.offsetTop > 26 ){
+			bifrFlyOrient = 'upward';
+		}
+	}
+
+	//loading页小鸟图片切换
+	clipX = (clipX % 52) < 6 ? clipX : 0;
+	clipX++;
+	birdFly.style.backgroundPosition = (clipX % 52) * 52 + 'px 0px';// 裁切
+	progressBar.style.width = (loadingComplete / 100) * progressBarBox.offsetWidth + 'px';// 显示进度条当前进度
+	loadingText.innerText = '资源加载中...' + loadingComplete.toFixed(0) + '%';// 显示当前进度百分比
+}, 50);
+
+function mainMenuBgMove(){
+	if( menuShow ){
+		mainMenuBg.style.backgroundPosition = mainMenuBgMoveStep-- + 'px 0px';
+		if( Math.abs(mainMenuBgMoveStep) > window.screen.width ){
+			mainMenuBgMoveStep = 0;
+		}
+	} else {
+		clearInterval(mainMenuBgMoveTimer);
+		return;
+	}
+}
 
 //-----------------------添加精灵以及实现引擎部分方法
 game.addSprite(bg);// 向游戏里添加背景
@@ -184,9 +217,9 @@ game.paintOverSprites = function(time){// 绘制水管
 game.collisionDetection = function(){// 实现小鸟与各个边界的碰撞
 	//------------小鸟与水管碰撞
 	for( let i = 0; i < allPipes.length; ++i ){
-		if( allPipes[i].left <= bird.left + bird.width && allPipes[i].left + allPipes[i].width > bird.left ){
+		if( allPipes[i].left <= bird.left + bird.width && allPipes[i].left + allPipes[i].width > bird.left + 12/*这里的12px是小鸟尾巴的宽度，不计入碰撞*/ ){
 			if( allPipes[i].height - Math.abs(allPipes[i].top) > bird.top + bird.blankHeight || allPipes[i].height - Math.abs(allPipes[i].top) + allPipes[i].gap < bird.top + bird.height - bird.blankHeight ){
-				game.paused = true;// 游戏暂停
+				game.isOver = true;
 				game.playerDeadAnimation()// 小鸟死亡动画
 			}
 		} else if( allPipes[i].left + allPipes[i].width === bird.left ){// 如果小鸟顺利通过水管，则得分
@@ -197,7 +230,7 @@ game.collisionDetection = function(){// 实现小鸟与各个边界的碰撞
 
 	//------------小鸟飞太低
 	if( bird.top > CANVAS.height ){
-		game.paused = true;// 游戏暂停
+		game.isOver = true;
 		setTimeout(function(){
 			deadMenuBg.style.display = 'block';// 弹出游戏菜单
 		} ,500);
@@ -243,7 +276,6 @@ game.playerDeadAnimation = function(){// 小鸟死亡动画
 			}
 		}, 30);
 	}, 500);
-	
 };
 
 game.startAnimate = function(time){// 游戏开始循环的条件以及另外的限制条件
@@ -251,14 +283,11 @@ game.startAnimate = function(time){// 游戏开始循环的条件以及另外的
 };
 
 game.gameOver = function(time){// 游戏结束需要的重置操作
-
-	// time = game.startTime;
-
 	// 得分重置
 	game.scores = 0;
 
 	// 游戏时间相关重置
-	game.paused = false;
+	game.isOver = false;
 	game.startTime = 0;
 	game.lastTime = 0;
 	game.gameTime = 0;
@@ -279,7 +308,7 @@ game.gameOver = function(time){// 游戏结束需要的重置操作
 	pipes = {};
 	lastPaintPipes = 0;
 
-
+	// 主菜单不显示
 };
 
 //-----------------------菜单交互
@@ -289,8 +318,10 @@ startGame.onclick = function(e){
 	// 重置游戏数值
 	game.gameOver();
 
+	menuShow = false;
 	mainMenuBg.style.display = 'none';// 隐藏主菜单
 	scoresBoardBox.style.display = 'block';// 显示得分面板
+
 	game.start();// 开启游戏循环
 
 	// 玩家选择不同难度，水管绘制时间间隔不同
@@ -344,12 +375,15 @@ restartGame.onclick = function(e){
 	e.stopPropagation();
 	deadMenuBg.style.display = 'none';// 关闭当前菜单
 	game.gameOver();
+	game.start();// 开启游戏循环
 };
 
 goMainMenu.onclick = function(e){
 	e.stopPropagation();
 	deadMenuBg.style.display = 'none';// 关闭当前菜单
 	mainMenuBg.style.display = 'block';// 打开主菜单
+	menuShow = true;
+	mainMenuBgMoveTimer = setInterval(mainMenuBgMove , 1000 / 60);// 主菜单背景开始运动
 };
 
 exitGame.onclick = function(e){

@@ -14,7 +14,7 @@ let Game = function (gameName, canvasId) {
 	this.sprites = [];
 	this.keyListeners = [];
 	this.level = 'normal';// 默认游戏难度
-	;
+	this.isOver = false;// 判断游戏是否结束
 
 	// 高分榜
 	this.scores = 0;// 当前得分
@@ -93,34 +93,37 @@ Game.prototype = {
 	start: function () {
 		let self = this;
 		this.startTime = getTimeNow();
-
-		 window.requestNextAnimationFrame(function (time) {
+		window.requestNextAnimationFrame(function (time) {
 			self.animate.call(self, time);
 		});
 	},
 	animate: function (time) {
 		let self = this;
 
-		if (this.paused) {
-			setTimeout(function () {
-				self.animate.call(self, time);
-			}, this.PAUSED_TIMEOUT);
-		} else {
-			this.tick(time);
-			this.clearScreen();
+		if(!this.isOver){
+			if (this.paused) {
+				setTimeout(function () {
+					self.animate.call(self, time);
+				}, this.PAUSED_TIMEOUT);
+			} else {
+				this.tick(time);
+				this.clearScreen();
 
-			this.startAnimate(time);
-			this.paintUnderSprites();
+				this.startAnimate(time);
+				this.paintUnderSprites();
 
-			this.updateSprites(time);
-			this.paintSprites(time);
+				this.updateSprites(time);
+				this.paintSprites(time);
 
-			this.paintOverSprites(time);
-			this.endAnimate();
+				this.paintOverSprites(time);
+				this.endAnimate();
 
-			window.requestNextAnimationFrame(function (time) {
-				self.animate.call(self, time);
-			});
+				window.requestNextAnimationFrame(function (time) {
+					self.animate.call(self, time);
+				});
+			}
+		}else {
+			return;
 		}
 	},
 	tick: function (time) {
