@@ -28,6 +28,15 @@ let Game = function (gameName, canvasId) {
 	this.imagesFailedToLoad = 0;
 	this.imagesIndex = 0;
 
+	// 音效加载
+	this.audioUrls = [];
+	this.audiosIndex = 0;
+
+	this.resourceUrls = [];
+	this.resourcesIndex = 0;
+	this.resourcesLoaded = 0;
+	this.resourcesFailedToLoad = 0;
+
 	// 时间
 	this.startTime = 0;
 	this.lastTime = 0;
@@ -57,13 +66,13 @@ let Game = function (gameName, canvasId) {
 };
 
 Game.prototype = {
-	// 加载图片
+	// 加载资源
 	getImage: function (imageUrl) {
         return this.images[imageUrl];
     },
-    loadImage: function (imageUrl) {
-        let image = new Image();
-        let self = this;
+    loadResource: function (imageUrl) {
+		let self = this;
+		let image = new Image();
 
         image.src = imageUrl;
 
@@ -77,16 +86,30 @@ Game.prototype = {
 
         this.images[imageUrl] = image;
     },
-    loadImages: function () {
-        if (this.imagesIndex < this.imageUrls.length) {
-            this.loadImage(this.imageUrls[this.imagesIndex]);
-            this.imagesIndex++;
-        }
+    loadResources: function () {
+        // if (this.resourcesIndex < this.resourceUrls.length) {
+        //     this.loadResource(this.resourceUrls[this.resourcesIndex]);
+        //     this.resourcesIndex++;
+        // }
+		if (this.imagesIndex < this.imageUrls.length) {
+			this.loadResource(this.imageUrls[this.imagesIndex]);
+			this.imagesIndex++;
+		}
 
-        return (this.imagesLoaded + this.imagesFailedToLoad) / this.imageUrls.length * 100;
+
+		return (this.imagesLoaded + this.imagesFailedToLoad) / this.imageUrls.length * 100;
     },
-    queueImage: function (imageUrl) {
-        this.imageUrls.push(imageUrl);
+	queueResource: function (resources) {
+		for( let resource in resources ){
+			for( let i = 0; i < resources[resource].length; ++ i){
+				if( resource === 'images' ){
+					this.imageUrls.push(resources[resource][i]);
+				}
+				if( resource === 'audios' ){
+					this.audioUrls.push(resources[resource][i]);
+				}
+			}
+		}
     },
 
 	// 游戏循环
@@ -94,6 +117,7 @@ Game.prototype = {
 		let self = this;
 		this.startTime = getTimeNow();
 		window.requestNextAnimationFrame(function (time) {
+
 			self.animate.call(self, time);
 		});
 	},

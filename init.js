@@ -128,31 +128,16 @@ let goMainMenu = document.getElementById('goMainMenu');// 获取跳转主菜单�
 let exitGame = document.getElementById('exitGame');// 获取退出按钮
 let deadAnimationTimer = undefined;// 创建死亡动画定时器
 
-//-----------------------图片加载
-game.queueImage('img/bg.png');
-game.queueImage('img/start_game_btn.png');
-game.queueImage('img/level_label.png');
-game.queueImage('img/level_easy_btn.png');
-game.queueImage('img/level_normal_btn.png');
-game.queueImage('img/level_hard_btn.png');
-game.queueImage('img/cutting_line.png');
-game.queueImage('img/main_menu_bg.png');
-game.queueImage('img/bird_sheet.png');
-game.queueImage('img/deadbird_sheet.png');
-game.queueImage('img/loading_text.png');
-game.queueImage('img/pipe_downward.png');
-game.queueImage('img/pipe_upward.png');
-game.queueImage('img/setting.png');
-game.queueImage('img/restart_game_btn.png');
-game.queueImage('img/exit_game_btn.png');
-game.queueImage('img/setting_menu_bg.png');
-game.queueImage('img/continue_game_btn.png');
-game.queueImage('img/scores_label.png');
+//-----------------------资源加载
+game.queueResource({
+	images: ['img/bg.png', 'img/start_game_btn.png', 'img/level_label.png', 'img/level_easy_btn.png', 'img/level_normal_btn.png', 'img/level_hard_btn.png', 'img/cutting_line.png', 'img/main_menu_bg.png', 'img/bird_sheet.png', 'img/deadbird_sheet.png', 'img/loading_text.png', 'img/pipe_downward.png', 'img/pipe_upward.png', 'img/setting.png', 'img/restart_game_btn.png', 'img/exit_game_btn.png', 'img/setting_menu_bg.png', 'img/continue_game_btn.png', 'img/scores_label.png'],
+	audios: ['audio/bird_fly.mp3', 'click.mp3', 'audio/game_over.mp3']
+});
 
-loadingInterval = setInterval(function(){// 循环调用loadImages()方法加载图片
-	loadingComplete = game.loadImages();// 开始加载图片，返回完成百分比
+loadingInterval = setInterval(function(){// 循环调用loadImages()方法加载资源
+	loadingComplete = game.loadResources();// 开始加载资源，返回完成百分比
 
-	if(loadingComplete === 100){// 加载完毕，可能有加载失败的图片
+	if(loadingComplete === 100){// 加载完毕，可能有加载失败的资源
 		clearInterval(loadingInterval);
 		setTimeout(function(){// 一定时间后关闭loading页
 			loadingBackground.style.display = 'none';// 关闭loading页
