@@ -92,7 +92,7 @@ let	bg = new Sprite('bg', new ImagePainter(bgImage.src), bgBehaviors);// 创建�
 
 //-----------------------loading页面相关
 let loadingInterval;// 创建loading页面加载定时器
-let loadingComplete = 0;// 创建loading页面加载定时器
+let loadingComplete = 0;// 图片加载进度
 let loadingBackground = document.getElementById('loadingBackground');// 获取loading页外盒子
 let birdFly = document.getElementById('birdFly');// 获取小鸟容器
 let clipX = 0;// 小鸟图片裁切X值(backgroundPosition样式)

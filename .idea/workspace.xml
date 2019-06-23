@@ -2,7 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容">
-      <change beforePath="$PROJECT_DIR$/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlappyBird.css" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlappyBird.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bird_fly.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/click.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/game_over.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/bird_sheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/continue_game_btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/cutting_line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/deadbird_sheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/exit_game_btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/go_main_menu_btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/level_easy_btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/level_hard_btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/level_label.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/level_normal_btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/loading_text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/main_menu_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pipe_downward.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pipe_upward.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/restart_game_btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/scores_label.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/setting_menu_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/start_game_btn.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/init.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -15,12 +40,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FlappyBird.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="52" column="86" selection-start-line="52" selection-start-column="86" selection-end-line="52" selection-end-column="86" />
+            <state relative-caret-position="509">
+              <caret line="55" column="17" lean-forward="true" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FlappyBird.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FlappyBird.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="524">
+              <caret line="201" column="151" lean-forward="true" selection-start-line="201" selection-start-column="151" selection-end-line="201" selection-end-column="151" />
             </state>
           </provider>
         </entry>
@@ -28,17 +71,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1820">
-              <caret line="178" column="12" lean-forward="true" selection-start-line="178" selection-start-column="12" selection-end-line="178" selection-end-column="12" />
+            <state relative-caret-position="296">
+              <caret line="175" column="12" selection-start-line="175" selection-start-column="12" selection-end-line="175" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="-582">
+              <caret line="200" column="39" selection-start-line="200" selection-start-column="39" selection-end-line="200" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -47,16 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>time</find>
-      <find>gameTime</find>
-      <find>keyAndListener</find>
-      <find>velocity</find>
-      <find>ex</find>
-      <find>execute</find>
-      <find>birdSheet</find>
-      <find>pipe</find>
-      <find>start</find>
-      <find>addEventListener</find>
       <find>startAnimate</find>
       <find>pause</find>
       <find>over</find>
@@ -66,12 +99,37 @@
       <find>294</find>
       <find>530</find>
       <find>边缘</find>
-      <find>imagesIndex</find>
       <find>soundChannels</find>
       <find>NUM_SOUND_CHANNELS</find>
+      <find>img/</find>
+      <find>DOM</find>
+      <find>loadingComplete</find>
+      <find>self</find>
+      <find>menuShow</find>
+      <find>imagesIndex</find>
+      <find>imageIndex</find>
+      <find>aside</find>
+      <find>16</find>
+      <find>nodesNeedRender</find>
+      <find>nodesObj</find>
+      <find>loadingText</find>
+      <find>background-size</find>
+      <find>position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box;</find>
+      <find>cur</find>
+      <find>progressBarBox</find>
+      <find>stop</find>
+      <find>背景</find>
+      <find>mainMenuBgMove</find>
     </findStrings>
     <replaceStrings>
       <replace>边界</replace>
+      <replace>images</replace>
+      <replace>images/</replace>
+      <replace>me</replace>
+      <replace>div</replace>
+      <replace>nodesObj</replace>
+      <replace>NODE</replace>
+      <replace>nodesSet</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -80,11 +138,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FlappyBird.css" />
         <option value="$PROJECT_DIR$/Sprite.js" />
-        <option value="$PROJECT_DIR$/FlappyBird.html" />
-        <option value="$PROJECT_DIR$/init.js" />
+        <option value="$USER_HOME$/Desktop/贪食蛇Demo版.md" />
         <option value="$PROJECT_DIR$/Game.js" />
+        <option value="$PROJECT_DIR$/FlappyBird.css" />
+        <option value="$PROJECT_DIR$/init.js" />
+        <option value="$PROJECT_DIR$/FlappyBird.html" />
+        <option value="$PROJECT_DIR$/FlappyBird.js" />
       </list>
     </option>
   </component>
@@ -99,16 +159,17 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="95" />
+    <option name="x" value="64" />
     <option name="y" value="23" />
-    <option name="width" value="1873" />
-    <option name="height" value="1034" />
+    <option name="width" value="1938" />
+    <option name="height" value="1063" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -116,16 +177,10 @@
               <item name="FlappyBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="FlappyBird" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="FlappyBird" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FlappyBird" type="462c0819:PsiDirectoryNode" />
-              <item name="audio" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -167,6 +222,10 @@
       <workItem from="1560555999127" duration="3408000" />
       <workItem from="1560779384602" duration="1492000" />
       <workItem from="1560860702175" duration="6121000" />
+      <workItem from="1560948412802" duration="194000" />
+      <workItem from="1560949540305" duration="309000" />
+      <workItem from="1560949877422" duration="502000" />
+      <workItem from="1561122143272" duration="37771000" />
     </task>
     <task id="LOCAL-00001" summary="修改canvas标签中的文字内容">
       <created>1559469840805</created>
@@ -186,12 +245,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43154000" />
+    <option name="totallyTimeSpent" value="81930000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="95" y="23" width="1873" height="1034" extended-state="0" />
+    <frame x="64" y="23" width="1938" height="1063" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.122570194" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12921941" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -207,7 +267,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24959038" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,45 +278,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="修改canvas标签中的文字内容" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/img/level_label.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/pipe_downward.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/pipe_upward.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/cutting_line.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FlappyBird.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="14" column="104" selection-start-line="14" selection-start-column="104" selection-end-line="14" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FlappyBird.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="52" column="86" selection-start-line="52" selection-start-column="86" selection-end-line="52" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="119" column="49" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="49" />
-          <folding>
-            <element signature="n#style#0;n#strong#0;n#!!top" expanded="true" />
-            <element signature="e#82#88#0" expanded="true" />
-            <element signature="e#88#94#0" expanded="true" />
-            <element signature="n#style#0;n#strong#2;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/img/level_label.png" />
+    <entry file="file://$PROJECT_DIR$/img/pipe_downward.png" />
+    <entry file="file://$PROJECT_DIR$/img/pipe_upward.png" />
+    <entry file="file://$PROJECT_DIR$/img/cutting_line.png" />
+    <entry file="file://$PROJECT_DIR$/main.js" />
     <entry file="file://$PROJECT_DIR$/Sprite.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="695">
@@ -271,17 +297,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1820">
-          <caret line="178" column="12" lean-forward="true" selection-start-line="178" selection-start-column="12" selection-end-line="178" selection-end-column="12" />
+    <entry file="file://$USER_HOME$/heyhyx/source/_posts/从ghost到hexo.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-140" />
+          <second_editor />
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Desktop/hello-world.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/贪食蛇Demo版.md" />
     <entry file="file://$PROJECT_DIR$/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="-582">
+          <caret line="200" column="39" selection-start-line="200" selection-start-column="39" selection-end-line="200" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="175" column="12" selection-start-line="175" selection-start-column="12" selection-end-line="175" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/sprite_sheet.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/maps.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FlappyBird.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="55" column="17" lean-forward="true" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FlappyBird.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FlappyBird.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="201" column="151" lean-forward="true" selection-start-line="201" selection-start-column="151" selection-end-line="201" selection-end-column="151" />
         </state>
       </provider>
     </entry>
