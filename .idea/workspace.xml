@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlappyBird.css" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlappyBird.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bird_fly.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/click.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/game_over.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/bird_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/continue_game_btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/cutting_line.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/deadbird_sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/exit_game_btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/go_main_menu_btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/level_easy_btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/level_hard_btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/level_label.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/level_normal_btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/loading_text.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/main_menu_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/pipe_downward.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/pipe_upward.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/restart_game_btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/scores_label.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/setting.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/setting_menu_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/start_game_btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/init.js" afterDir="false" />
-    </list>
+    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -62,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FlappyBird.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="201" column="151" lean-forward="true" selection-start-line="201" selection-start-column="151" selection-end-line="201" selection-end-column="151" />
+            <state relative-caret-position="723">
+              <caret line="203" column="17" lean-forward="true" selection-start-line="203" selection-start-column="17" selection-end-line="203" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -225,7 +197,7 @@
       <workItem from="1560948412802" duration="194000" />
       <workItem from="1560949540305" duration="309000" />
       <workItem from="1560949877422" duration="502000" />
-      <workItem from="1561122143272" duration="37771000" />
+      <workItem from="1561122143272" duration="38618000" />
     </task>
     <task id="LOCAL-00001" summary="修改canvas标签中的文字内容">
       <created>1559469840805</created>
@@ -245,7 +217,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81930000" />
+    <option name="totallyTimeSpent" value="82777000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="23" width="1938" height="1063" extended-state="0" />
@@ -350,8 +322,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FlappyBird.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="201" column="151" lean-forward="true" selection-start-line="201" selection-start-column="151" selection-end-line="201" selection-end-column="151" />
+        <state relative-caret-position="723">
+          <caret line="203" column="17" lean-forward="true" selection-start-line="203" selection-start-column="17" selection-end-line="203" selection-end-column="17" />
         </state>
       </provider>
     </entry>
