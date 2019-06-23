@@ -78,6 +78,7 @@ let FlappyBird = {
 					case 'normal': pipes.left -= 3; break;
 					case 'hard': pipes.left -= 4; break;
 				}
+
 			},
 		},
 
@@ -235,6 +236,7 @@ let FlappyBird = {
 			this.sprites = []; // 存放所有精灵
 			this.lastPipesCreated = 0; // 上一组水管被创建的时间点
 			this.createPipesInterval = 2000; // 创建水管组的时间间隔
+			this.firstPipesIndex = 2; // 最左边一组水管在this.sprites中的索引
 
 			/*图片*/
 			this.images = {}; // 存放每个图片的名称及其对应的路径
@@ -249,13 +251,7 @@ let FlappyBird = {
 			this.lastTime = 0;
 			this.gameTime = 0;
 
-
-
-
-
-
 			this.bindTouchEvent(this.listeners); // 开启手指点击事件
-
 		};
 
 		Engine.prototype = {
@@ -301,7 +297,6 @@ let FlappyBird = {
 
 				if(time - this.lastPipesCreated > this.createPipesInterval){
 					this.sprites.push(this.createPipes());
-					console.log([this.sprites, this.sprites.length, time]);
 					this.lastPipesCreated = time;
 				}
 
@@ -391,10 +386,12 @@ let FlappyBird = {
 
 			/*
 			* 碰撞检测
-			* 小鸟与水管，小鸟飞太高，小鸟飞太低
+			* 小鸟与水管，小鸟飞太高，小鸟飞太低，水管移出左边界
 			* */
 			collisionDetection: function(){
-
+				if(this.sprites[this.firstPipesIndex].left + this.sprites[this.firstPipesIndex].width < 0){
+					this.sprites.splice(this.firstPipesIndex, 1); // 如果水管已经移出左边界，则从allPipes中删除该组水管连同其index，不让数组长度无限制增加
+				}
 			},
 
 			/*
