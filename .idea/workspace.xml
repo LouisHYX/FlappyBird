@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容">
-      <change beforePath="$PROJECT_DIR$/FlappyBird.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FlappyBird.js" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/sprite_sheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/sprite_sheet.png" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FlappyBird.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+            <state relative-caret-position="710">
+              <caret line="300" selection-start-line="300" selection-end-line="300" />
               <folding>
                 <element signature="e#2853#3089#0" />
                 <element signature="e#5262#5557#0" />
@@ -62,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="189" column="42" lean-forward="true" selection-start-line="189" selection-start-column="42" selection-end-line="189" selection-end-column="50" />
+            <state relative-caret-position="298">
+              <caret line="56" column="105" lean-forward="true" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="105" />
             </state>
           </provider>
         </entry>
@@ -92,7 +90,6 @@
       <find>background-size</find>
       <find>position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box;</find>
       <find>cur</find>
-      <find>progressBarBox</find>
       <find>stop</find>
       <find>背景</find>
       <find>gamelevel</find>
@@ -111,6 +108,7 @@
       <find>lastPaintPipes</find>
       <find>window</find>
       <find>getA</find>
+      <find>progressBarBox</find>
     </findStrings>
     <replaceStrings>
       <replace>边界</replace>
@@ -219,7 +217,7 @@
       <workItem from="1560948412802" duration="194000" />
       <workItem from="1560949540305" duration="309000" />
       <workItem from="1560949877422" duration="502000" />
-      <workItem from="1561122143272" duration="72888000" />
+      <workItem from="1561122143272" duration="73612000" />
     </task>
     <task id="LOCAL-00001" summary="修改canvas标签中的文字内容">
       <created>1559469840805</created>
@@ -239,11 +237,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117047000" />
+    <option name="totallyTimeSpent" value="117771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="23" width="1938" height="1063" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12921941" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -314,13 +311,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="189" column="42" lean-forward="true" selection-start-line="189" selection-start-column="42" selection-end-line="189" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FlappyBird.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
@@ -342,10 +332,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="56" column="105" lean-forward="true" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FlappyBird.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+        <state relative-caret-position="710">
+          <caret line="300" selection-start-line="300" selection-end-line="300" />
           <folding>
             <element signature="e#2853#3089#0" />
             <element signature="e#5262#5557#0" />
