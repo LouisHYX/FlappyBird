@@ -11,8 +11,8 @@
 	<canvas id="canvas">请升级您的浏览器版本以支持该游戏</canvas>
 
 	<!-- 得分面板 -->
-	<div class="scoresBoardBox" id="scoresBoardBox">
-		<h4 class="scoresTitle">得分</h4>
+	<div class="scoreBoard" id="scoreBoard">
+		<h4 class="scoreTitle">得分</h4>
 		<span class="scores" id="scores">0</span>
 	</div>
 
@@ -30,12 +30,12 @@
 	</div> -->
 
 	<!-- 结束菜单 -->
-	<div class="deadMenuBg menuBg" id="deadMenuBg">
-		<div class="deadMenuBox menuBox">
-			<h4 class="scoresLabel"></h4>
+	<div class="deathMenuBg menuBg" id="deathMenuBg">
+		<div class="deathMenuBox menuBox" id="deathMenuBox">
+			<h4 class="scoresLabel" id="scoresLabel"></h4>
 			<span class="finalScores" id="finalScores"></span>
 			<ul>
-				<li class="cutting_line"></li>
+				<li class="cuttingLine"></li>
 				<li class="mainButton" id="restartGame"></li>
 				<li class="mainButton" id="goMainMenu"></li>
 				<li class="mainButton" id="exitGame"></li>
@@ -51,7 +51,7 @@
 				<li class="levelButton easyLevel" id="easyLevel" data-selected="0" data-level="easy" data-createPipesInterval="3000"></li>
 				<li class="levelButton normalLevel" id="normalLevel" data-selected="1" data-level="normal" data-createPipesInterval="2000"></li>
 				<li class="levelButton hardLevel" id="hardLevel" data-selected="0" data-level="hard" data-createPipesInterval="1500"></li>
-				<li class="cutting_line" id="cutting_line"></li>
+				<li class="cuttingLine" id="cuttingLine"></li>
 				<li class="mainButton" id="startGame"></li>
 			</ul>
 		</div>

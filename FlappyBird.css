@@ -11,27 +11,27 @@ html{ width: 100%; height: 100%; font-family: Arial, \5fae\8f6f\96c5\9ed1/*微�
 .loadingText{ margin-top: 20px; font-size: 20px; color: #a4795d; }
 
 /*菜单通用*/
-.mainMenuBox .cutting_line, .deadMenuBox .cutting_line{ width: 174px; height: 2px; margin: 20px auto; }
+.mainMenuBox .cuttingLine, .deathMenuBox .scoresLabel{ width: 174px; height: 2px; margin: 20px auto; }
 .menuBg{ display: none; position: absolute; top: 0; width: 100%; height: 100%; }
 .menuBox{ position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box; }
 .mainButton{ width: 144px; height: 52px; }
 .levelButton{ width: 144px; height: 46px; }
-.mainMenuBox ul li{ margin: 12px auto; }
+.menuBox ul li{ margin: 12px auto; }
 
 /*主菜单*/
-.mainMenuBg{ background-size: cover;}
+.mainMenuBg{ background-size: cover; }
 .mainMenuBox{ width: 270px; height: 350px; }
 .mainMenuBox .levelLabel{ width: 174px; height: 15px; margin: auto; margin-top: 12px; }
 
 /*结束菜单*/
-.deadMenuBg{ background: rgba(0, 0, 0, 0.6); }
-.deadMenuBox{ width: 270px; height: 350px; }
-.deadMenuBox .scoresLabel{ width: 174px; height: 15px; margin: auto; margin-top: 12px; }
-.deadMenuBox .finalScores{ margin: auto; margin-top: 12px; }
+.deathMenuBg{ background: rgba(0, 0, 0, 0.6); }
+.deathMenuBox{ width: 270px; height: 350px; }
+.deathMenuBox .scoresLabel{ width: 174px; height: 15px; margin: auto; margin-top: 12px; }
+.deathMenuBox .finalScores{ margin: auto; margin-top: 12px; }
 
 /*得分面板*/
-.scoresBoardBox{ display: none; background: rgba(0, 0, 0, 0.6); position: fixed; right: 10px; bottom: 6px; color: white; font-size: 12px; padding: 4px 14px; box-sizing: border-box; }
-.scoresTitle{ float: left; margin: 9px 7px 0 0; letter-spacing: 1px; }
+.scoreBoard{ display: none; background: rgba(0, 0, 0, 0.6); position: fixed; right: 10px; bottom: 6px; color: white; font-size: 12px; padding: 4px 14px; box-sizing: border-box; }
+.scoreTitle{ float: left; margin: 9px 7px 0 0; letter-spacing: 1px; }
 .scores{ float: right; font-size: 22px; letter-spacing: 1px; }
 
 /*设置*/
