@@ -11,21 +11,20 @@ html{ width: 100%; height: 100%; font-family: Arial, \5fae\8f6f\96c5\9ed1/*微�
 .loadingText{ margin-top: 20px; font-size: 20px; color: #a4795d; }
 
 /*菜单通用*/
-.mainMenuBox .cuttingLine, .deathMenuBox .scoresLabel{ width: 174px; height: 2px; margin: 20px auto; }
+.menuBox ul li{ margin: 12px auto; }
+.menuBox .cuttingLine{ width: 174px; height: 2px; margin: 20px auto; }
 .menuBg{ display: none; position: absolute; top: 0; width: 100%; height: 100%; }
-.menuBox{ position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box; }
+.menuBox{ width: 260px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box; }
 .mainButton{ width: 144px; height: 52px; }
 .levelButton{ width: 144px; height: 46px; }
-.menuBox ul li{ margin: 12px auto; }
 
 /*主菜单*/
 .mainMenuBg{ background-size: cover; }
-.mainMenuBox{ width: 270px; height: 350px; }
-.mainMenuBox .levelLabel{ width: 174px; height: 15px; margin: auto; margin-top: 12px; }
+.mainMenuBox{ height: 336px; }
+.mainMenuBox .levelLabel{ width: 174px; height: 15px; margin: auto; margin-top: 6px; }
 
 /*结束菜单*/
-.deathMenuBg{ background: rgba(0, 0, 0, 0.6); }
-.deathMenuBox{ width: 270px; height: 350px; }
+.deathMenuBox{ display: none; height: 336px; }
 .deathMenuBox .scoresLabel{ width: 174px; height: 15px; margin: auto; margin-top: 12px; }
 .deathMenuBox .finalScores{ margin: auto; margin-top: 12px; }
 
@@ -35,11 +34,9 @@ html{ width: 100%; height: 100%; font-family: Arial, \5fae\8f6f\96c5\9ed1/*微�
 .scores{ float: right; font-size: 22px; letter-spacing: 1px; }
 
 /*设置*/
-.setting{ width: 40px; height: 40px; position: fixed; right: 10px; top: 10px; }
+.setting{ width: 52px; height: 52px; position: fixed; right: 14px; top: 14px; }
 
 /*设置菜单*/
-/*.settingMenuBg{ display: none; position: absolute; top: 0; background: rgba(0, 0, 0, 0.6); width: 100%; height: 100%; }
-.settingMenuBox{ background: url('images/setting_menu_bg.png') no-repeat; width: 270px; height: 190px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box; }
-.settingMenuBox ul li{ width: 156px; height: 56px; margin: 12px auto; }
-.settingMenuBox .continueGame{ background: url('images/continue_game_btn.png') no-repeat; background-position: 0 0; }
-.settingMenuBox .exitGame{ background: url('images/exit_game_btn.png') no-repeat; background-position: 0 0; }*/
+.settingMenuBox{ display: none; height: 308px; }
+.audioBox{ text-align: center; margin-top: 20px; }
+.audioBox .audioSwitch{ display: inline-block; width: 72px; height: 72px; margin: 0 8px; }

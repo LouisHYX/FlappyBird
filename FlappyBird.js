@@ -37,14 +37,28 @@ let FlappyBird = {
 		scores: {node: document.getElementById('scores'), render: false}, // 得分显示框
 
 		/*结束菜单*/
-		deathMenuBg: {node: document.getElementById('deathMenuBg'), render: false}, // 大背景
 		deathMenuBox: {node: document.getElementById('deathMenuBox'), location: [0, -482], render: true}, // 结束菜单背景
 		scoresLabel: {node: document.getElementById('scoresLabel'), location: [0, -465], render: true}, // 得分标题
 		restartGame: {node: document.getElementById('restartGame'), location: [0, -104], render: true}, // 重玩按钮
 		goMainMenu: {node: document.getElementById('goMainMenu'), location: [0, -52], render: true}, // 跳转主菜单按钮
 		exitGame: {node: document.getElementById('exitGame'), location: [0, -156], render: true}, // 退出游戏按钮
 
+		/*设置*/
+		setting: {node: document.getElementById('setting'), location: [0, -398], render: true}, // 设置按钮
+		settingMenuBox: {node: document.getElementById('settingMenuBox'), location: [0, -818], render: true}, // 设置菜单背景
+		cuttingLineInSetting: {node: document.getElementById('cuttingLineInSetting'), location: [0, -480], render: true}, // 分割线
+		musicSwitch: {node: document.getElementById('musicSwitch'), location: [-260, -482], render: true}, // 继续游戏按钮
+		soundSwitch: {node: document.getElementById('soundSwitch'), location: [-404, -482], render: true}, // 继续游戏按钮
+		getBack: {node: document.getElementById('getBack'), location: [-288, 0], render: true}, // 继续游戏按钮
+		exitGameInSetting: {node: document.getElementById('exitGameInSetting'), location: [-288, -52], render: true}, // 退出游戏按钮
 	},
+
+	/*
+	* 常量
+	* */
+	CONSTANT: (function(){
+		// console.log(this);
+	})(),
 
 	/*
 	* 游戏资源
@@ -89,11 +103,6 @@ let FlappyBird = {
 					bird.t += 0.1;
 				}
 			},
-			die: function(bird, gameLevel, time){ // 小鸟死亡
-				if(bird.death){
-					bird.top -= 1;
-				}
-			},
 		},
 
 		/*水管行为集合*/
@@ -136,11 +145,7 @@ let FlappyBird = {
 
 		/*小鸟笔刷*/
 		birdBrush: function(bird, spriteSheet, ctx){
-
-			/*区分小鸟是否死亡*/
-			let location = bird.death ? bird.deathLocation[bird.deathLocationIndex] : bird.location[bird.locationIndex];
-
-			ctx.drawImage(spriteSheet, location.x, location.y, location.w, location.h, bird.left, bird.top, bird.width, bird.height);
+			ctx.drawImage(spriteSheet, bird.location[bird.locationIndex].x, bird.location[bird.locationIndex].y, bird.location[bird.locationIndex].w, bird.location[bird.locationIndex].h, bird.left, bird.top, bird.width, bird.height);
 		},
 
 		/*水管笔刷*/
@@ -172,7 +177,7 @@ let FlappyBird = {
 			this.top = 0;
 			this.velocityX = 0; // 水平速度
 			this.velocityY = 0; // 垂直速度
-			this.visible = true; // 是否可见
+			this.death = false; // 是否死亡
 			this.location = {}; // 贴图位置
 		};
 
@@ -181,7 +186,7 @@ let FlappyBird = {
 
 			/*绘制*/
 			draw: function(ctx){
-				if(this.visible) this.brush(this, this.spriteSheet, ctx);
+				if(!this.death) this.brush(this, this.spriteSheet, ctx);
 			},
 
 			/*更新*/
@@ -214,12 +219,18 @@ let FlappyBird = {
 			this.normalLevel = FlappyBird.NODE.normalLevel.node;
 			this.hardLevel = FlappyBird.NODE.hardLevel.node;
 			this.startGame = FlappyBird.NODE.startGame.node;
-			this.deathMenuBg = FlappyBird.NODE.deathMenuBg.node;
+			this.scoreBoard = FlappyBird.NODE.scoreBoard.node;
 			this.scores = FlappyBird.NODE.scores.node;
 			this.deathMenuBox = FlappyBird.NODE.deathMenuBox.node;
 			this.restartGame = FlappyBird.NODE.restartGame.node;
 			this.goMainMenu = FlappyBird.NODE.goMainMenu.node;
 			this.exitGame = FlappyBird.NODE.exitGame.node;
+			this.setting = FlappyBird.NODE.setting.node;
+			this.settingMenuBox = FlappyBird.NODE.settingMenuBox.node;
+			this.musicSwitch = FlappyBird.NODE.musicSwitch.node;
+			this.soundSwitch = FlappyBird.NODE.soundSwitch.node;
+			this.getBack = FlappyBird.NODE.getBack.node;
+			this.exitGameInSetting = FlappyBird.NODE.exitGameInSetting.node;
 
 			/*通用*/
 			this.canvas.setAttribute('width', window.screen.width/* * window.devicePixelRatio */ + 'px');
@@ -267,7 +278,9 @@ let FlappyBird = {
 								break;
 							case me.startGame.id:
 								me.resetData(me);
+								me.closeMenu(me.setting, me); // 隐藏设置按钮
 								me.closeMenu(me.mainMenuBg, me); // 关闭主菜单
+								me.showMenu(me.scoreBoard, me); // 显示计分板
 								requestNextAnimationFrame(function(time){ // 开启循环
 									me.animate.call(me, time);
 								});
@@ -286,16 +299,50 @@ let FlappyBird = {
 						switch (e.target.id) {
 							case me.restartGame.id:
 								me.resetData(me);
-								me.closeMenu(me.deathMenuBg, me); // 关闭结束菜单
+								me.closeMenu(me.deathMenuBox, me); // 关闭结束菜单
 								requestNextAnimationFrame(function(time){ // 开启循环
 									me.animate.call(me, time);
 								});
 								break;
 							case me.goMainMenu.id:
-								me.closeMenu(me.deathMenuBg, me); // 关闭结束菜单
+								me.closeMenu(me.scoreBoard, me); // 关闭计分板
+								me.closeMenu(me.deathMenuBox, me); // 关闭结束菜单
+								me.showMenu(me.setting, me); // 显示设置按钮
 								me.showMenu(me.mainMenuBg, me); // 显示主菜单
 								break;
 							case me.exitGame.id:
+								window.opener = null;
+								window.open('', '_self');
+								window.close();
+								break;
+						}
+					}
+				},
+
+				/*设置按钮*/
+				{
+					listener: this.setting,
+					handler: function(e, me){
+						e.preventDefault();
+						e.stopPropagation();
+
+						me.closeMenu(me.mainMenuBox, me); // 关闭主菜单，背景保留
+						me.showMenu(me.settingMenuBox, me); // 开启设置菜单
+					}
+				},
+
+				/*设置菜单*/{
+					listener: this.settingMenuBox,
+					handler: function(e, me){
+						e.preventDefault();
+						e.stopPropagation();
+
+						switch (e.target.id) {
+							case me.getBack.id:
+								me.closeMenu(me.settingMenuBox, me); // 关闭设置菜单
+								me.showMenu(me.mainMenuBox, me); // 显示主菜单
+								break;
+							case me.exitGameInSetting.id:
 								window.opener = null;
 								window.open('', '_self');
 								window.close();
@@ -365,21 +412,17 @@ let FlappyBird = {
 			animate: function(time){
 				let me = this;
 
+				this.clearCanvas(); // 清除画布内容
 
-				if(!this.bird.death){
-					this.clearCanvas(); // 清除画布内容
+				this.collisionDetection(); // 碰撞检测
 
-					this.collisionDetection(); // 碰撞检测
-
-					if(time - this.lastPipesCreated > this.createPipesInterval){
-						this.sprites.push(this.createPipes());
-						this.lastPipesCreated = time;
-					}
+				if(time - this.lastPipesCreated > this.createPipesInterval){
+					this.sprites.push(this.createPipes());
+					this.lastPipesCreated = time;
 				}
-				console.log(this.sprites)
-				this.updateSprites(time); // 更新精灵
-				this.drawSprites(); // 绘制精灵
 
+				if(!this.bird.death) this.updateSprites(time); // 更新精灵
+				this.drawSprites(); // 绘制精灵
 
 				/*
 				* 游戏循环是否继续
@@ -434,12 +477,8 @@ let FlappyBird = {
 				_bird.topOrigin = 100;
 				_bird.t = 0;
 				_bird.location = [{x: 0, y: 960, w: 52, h: 52}, {x: 52, y: 960, w: 52, h: 52}, {x: 104, y: 960, w: 52, h: 52}, {x: 156, y: 960, w: 52, h: 52}, {x: 208, y: 960, w: 52, h: 52}, {x: 260, y: 960, w: 52, h: 52}];
-				_bird.deathLocation = [{x: 312, y: 960, w: 52, h: 52}, {x: 364, y: 960, w: 52, h: 52}, {x: 416, y: 960, w: 52, h: 52}];
-				_bird.locationIndex = 0; // 贴图位置索引
-				_bird.deathLocationIndex = 0; // 死亡小鸟贴图位置索引
 				_bird.correctWidth = 12; // 碰撞修正宽度，用于更精确计算碰撞
 				_bird.correctHeight = 10; // 碰撞修正高度，用于更精确计算碰撞
-				_bird.death = false; // 小鸟是否死亡
 
 				this.bird = _bird; // 单独存入，以便之后操作
 
@@ -494,8 +533,7 @@ let FlappyBird = {
 				for(let i = this.firstPipesIndex; i < this.sprites.length; i++){
 					if(this.sprites[i].left < this.bird.left + this.bird.width && this.sprites[i].left + this.sprites[i].width > this.bird.left + this.bird.correctWidth){ // 与水管在x坐标上的比较
 						if(this.sprites[i].height + this.sprites[i].topDownward > this.bird.top + this.bird.correctHeight || this.sprites[i].height + this.sprites[i].topDownward + this.sprites[i].gap < this.bird.top + this.bird.height - this.bird.correctHeight){ // 与水管在y坐标上的比较
-							this.bird.death = true; // 小鸟死亡
-							this.sprites = this.sprites.slice(1, 2);
+							this.deathAnimation() // 小鸟死亡
 						}
 					} else if(this.sprites[i].left + this.sprites[i].width === this.bird.left){ // 小鸟通过水管
 						this.scoreHandler(); // 得分
@@ -504,8 +542,7 @@ let FlappyBird = {
 
 				/*小鸟飞太低*/
 				if(this.bird.top > this.canvas.height){
-					this.bird.death = true; // 小鸟死亡
-					this.sprites = this.sprites.slice(1, 2);
+					this.deathAnimation() // 小鸟死亡
 				}
 			},
 
@@ -564,17 +601,9 @@ let FlappyBird = {
 			},
 
 			/*
-			* 游戏结束处理函数
-			* 当小鸟死亡时才会执行
-			* 游戏设置为结束状态，游戏暂停，显示结束菜单
+			* 重置游戏数据
+			* 每次开始游戏以及重新开始游戏都要执行该方法
 			* */
-			gameOverHandler: function(me){
-				let self = me;
-
-				self.gameOver = true;
-				self.paused = true;
-				self.showMenu(me.deathMenuBg, me);
-			},
 			resetData: function(me){
 				let self = me || this;
 
@@ -584,6 +613,9 @@ let FlappyBird = {
 				* */
 				self.gameOver = false;
 				self.paused = false;
+				self.bird.death = false;
+				self.scores.textContent = '0';
+				self.finalScore = 0;
 
 				/*
 				* 小鸟
@@ -594,7 +626,6 @@ let FlappyBird = {
 				self.bird.topOrigin = 100;
 				self.bird.t = 0;
 				self.bird.velocityY = 0;
-				self.bird.visible = true;
 
 				/*
 				* 水管
@@ -617,12 +648,47 @@ let FlappyBird = {
 			deathAnimation: function(){
 				let me = this;
 
-				// me.bird.visible = false; // 隐藏原始小鸟
+				me.gameOver = true;
+				me.paused = true;
+				me.bird.death = true;
 
+				let deadBird = document.createElement('div');
+				let deadBird_v = -140;
+				let deadBird_t = 0;
+				let deadBird_top = me.bird.top + 'px'; // 死亡小鸟原始top值
+				let deadAnimationTimer = undefined;
+				deadBird.style.width = '52px';
+				deadBird.style.height = '52px';
+				deadBird.style.background = 'url("images/sprite_sheet.png")';
+				deadBird.style.backgroundPosition = '-312px -960px';
+				deadBird.style.position = 'absolute';
+				deadBird.style.top = me.bird.top + 'px';
+				deadBird.style.left = me.bird.left + 'px';
+				document.body.appendChild(deadBird);
 
-
+				/*
+				* 播放死亡动画
+				* */
 				setTimeout(function(){
-					me.gameOverHandler(me);
+					deadAnimationTimer = setInterval(function(){
+						deadBird.style.top = parseInt(deadBird_top) + deadBird_v * deadBird_t + 72 * Math.pow(deadBird_t, 2) / 2 + 'px';// 根据自由落体公式统一单位后计算死亡小鸟的位置
+						deadBird_v += 1;
+						deadBird_t += 0.2;
+
+						if( deadBird_t <= 2 ){
+							deadBird.style.backgroundPosition = '-364px -960px';
+						} else if( deadBird_t > 2 ) {
+							deadBird.style.backgroundPosition = '-416px -960px';
+						}
+
+						if( deadBird.offsetTop > window.screen.height ){// 小鸟飞出屏幕后，间隔一定时间显示菜单
+							document.body.removeChild(deadBird);// 删除死亡的小鸟
+							clearInterval(deadAnimationTimer);// 清除该定时器
+							setTimeout(function(){
+								me.showMenu(me.deathMenuBox, me);
+							} ,500);
+						}
+					}, 30);
 				}, 500);
 			},
 
@@ -669,7 +735,7 @@ let FlappyBird = {
 							} else {
 								_nodesSet[singleNode].node.style.backgroundImage = 'url("images/bg.png")';/*之后用this.images代替*/
 							}
-							_nodesSet[singleNode].node.style.backgroundPosition = _nodesSet[singleNode].location.join(' ') + 'px';
+							_nodesSet[singleNode].node.style.backgroundPosition = _nodesSet[singleNode].location[0] + 'px ' + _nodesSet[singleNode].location[1] + 'px';
 							_nodesSet[singleNode].node.style.backgroundRepeat = 'no-repeat';
 						}
 					}
@@ -772,4 +838,6 @@ let FlappyBird = {
 };
 
 FlappyBird.ENGINE().init();
+
+
 
