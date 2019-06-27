@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容">
-      <change beforePath="$PROJECT_DIR$/FlappyBird.js" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.js" afterDir="false" />
-    </list>
+    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -188,7 +186,7 @@
       <workItem from="1561465340609" duration="2281000" />
       <workItem from="1561554051719" duration="3283000" />
       <workItem from="1561561035329" duration="170000" />
-      <workItem from="1561637221062" duration="1238000" />
+      <workItem from="1561637221062" duration="1251000" />
     </task>
     <task id="LOCAL-00001" summary="修改canvas标签中的文字内容">
       <created>1559469840805</created>
@@ -208,11 +206,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124743000" />
+    <option name="totallyTimeSpent" value="124756000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="58" y="23" width="1938" height="1063" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1283255" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
