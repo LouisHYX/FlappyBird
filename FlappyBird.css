@@ -29,8 +29,8 @@ html{ width: 100%; height: 100%; font-family: Arial, \5fae\8f6f\96c5\9ed1/*微�
 .deathMenuBox .finalScoreBox{ margin: auto; margin-top: 12px; text-align: center; }
 
 /*得分面板*/
-.scoreBoard{ display: none; background: rgba(0, 0, 0, 0.6); position: fixed; right: 10px; bottom: 6px; color: white; font-size: 12px; padding: 4px 14px; box-sizing: border-box; }
-.scoreTitle{ float: left; margin: 9px 7px 0 0; letter-spacing: 1px; }
+.scoreBoard{ display: none; background: rgba(0, 0, 0, 0.6); position: fixed; right: 10px; bottom: 6px; color: white; font-size: 12px; padding: 4px 14px; box-sizing: border-box; border-radius: 4px; }
+.scoreTitle{ float: left; margin: 6px 7px 0 0; letter-spacing: 1px; }
 .scores{ float: right; font-size: 22px; letter-spacing: 1px; }
 
 /*设置*/

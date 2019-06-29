@@ -103,7 +103,7 @@ let FlappyBird = {
             },
             fallingBody: function (bird, gameLevel, time) { // 小鸟落体运动
                 if (!bird.death) {
-                    bird.top = bird.topOrigin + bird.velocityY * bird.t + bird.G_IN_GAME * Math.pow(bird.t, 2) / 2;// 根据自由落体公式统一单位后计算小鸟的位置
+                    bird.top = bird.topOrigin + bird.velocityY * bird.t + bird.G_IN_GAME * Math.pow(bird.t, 2) / 2; // 根据自由落体公式统一单位后计算小鸟的位置
                     bird.t += 0.1;
                 }
             },
@@ -719,7 +719,7 @@ let FlappyBird = {
                 for (let i = 0; i < fScoreString.length; i++) {
                     let _singleScoreBox = document.createElement('span');
                     _singleScoreBox.style.display = 'inline-block';
-                    _singleScoreBox.style.width = '68px';
+                    _singleScoreBox.style.width = '60px';
                     _singleScoreBox.style.height = '68px';
                     _singleScoreBox.style.backgroundImage = 'url(' + self.imagesInAsset.maps + ')';
                     _singleScoreBox.style.backgroundRepeat = 'no-repeat';
@@ -729,31 +729,31 @@ let FlappyBird = {
                             _singleScoreBox.style.backgroundPosition = '0 -1310px';
                             break;
                         case '1':
-                            _singleScoreBox.style.backgroundPosition = '-68px -1310px';
+                            _singleScoreBox.style.backgroundPosition = '-60px -1310px';
                             break;
                         case '2':
-                            _singleScoreBox.style.backgroundPosition = '-136px -1310px';
+                            _singleScoreBox.style.backgroundPosition = '-120px -1310px';
                             break;
                         case '3':
-                            _singleScoreBox.style.backgroundPosition = '-204px -1310px';
+                            _singleScoreBox.style.backgroundPosition = '-180px -1310px';
                             break;
                         case '4':
-                            _singleScoreBox.style.backgroundPosition = '-272px -1310px';
+                            _singleScoreBox.style.backgroundPosition = '-240px -1310px';
                             break;
                         case '5':
                             _singleScoreBox.style.backgroundPosition = '0 -1378px';
                             break;
                         case '6':
-                            _singleScoreBox.style.backgroundPosition = '-68px -1378px';
+                            _singleScoreBox.style.backgroundPosition = '-60px -1378px';
                             break;
                         case '7':
-                            _singleScoreBox.style.backgroundPosition = '-136px -1378px';
+                            _singleScoreBox.style.backgroundPosition = '-120px -1378px';
                             break;
                         case '8':
-                            _singleScoreBox.style.backgroundPosition = '-204px -1378px';
+                            _singleScoreBox.style.backgroundPosition = '-180px -1378px';
                             break;
                         case '9':
-                            _singleScoreBox.style.backgroundPosition = '-272px -1378px';
+                            _singleScoreBox.style.backgroundPosition = '-240px -1378px';
                             break;
                     }
 
