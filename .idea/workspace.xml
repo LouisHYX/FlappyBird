@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容" />
+    <list default="true" id="a0e55ba9-44bc-4473-abfa-088dd47ba981" name="Default Changelist" comment="修改canvas标签中的文字内容">
+      <change beforePath="$PROJECT_DIR$/FlappyBird.html" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlappyBird.js" beforeDir="false" afterPath="$PROJECT_DIR$/FlappyBird.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FlappyBird.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+            <state relative-caret-position="452">
+              <caret line="56" column="52" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -34,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FlappyBird.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="270" column="16" lean-forward="true" selection-start-line="270" selection-start-column="16" selection-end-line="270" selection-end-column="16" />
+            <state relative-caret-position="170">
+              <caret line="397" selection-start-line="397" selection-end-line="397" />
             </state>
           </provider>
         </entry>
@@ -44,11 +47,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>loadingText</find>
-      <find>background-size</find>
-      <find>position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; padding: 20px; box-sizing: border-box;</find>
-      <find>cur</find>
-      <find>stop</find>
       <find>背景</find>
       <find>gamelevel</find>
       <find>绘制</find>
@@ -74,6 +72,11 @@
       <find>col</find>
       <find>coli</find>
       <find>声音</find>
+      <find>this.nodes</find>
+      <find>currentTargetId</find>
+      <find>colli</find>
+      <find>musicOn</find>
+      <find>me.nodes.clickSound.node.</find>
     </findStrings>
     <replaceStrings>
       <replace>边界</replace>
@@ -116,7 +119,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="58" />
+    <option name="x" value="57" />
     <option name="y" value="23" />
     <option name="width" value="1938" />
     <option name="height" value="1063" />
@@ -133,6 +136,11 @@
             <path>
               <item name="FlappyBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="FlappyBird" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FlappyBird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FlappyBird" type="462c0819:PsiDirectoryNode" />
+              <item name="audios" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -187,6 +195,7 @@
       <workItem from="1561554051719" duration="3283000" />
       <workItem from="1561561035329" duration="170000" />
       <workItem from="1561637221062" duration="1251000" />
+      <workItem from="1561772312625" duration="9394000" />
     </task>
     <task id="LOCAL-00001" summary="修改canvas标签中的文字内容">
       <created>1559469840805</created>
@@ -206,10 +215,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124756000" />
+    <option name="totallyTimeSpent" value="134150000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="58" y="23" width="1938" height="1063" extended-state="0" />
+    <frame x="57" y="23" width="1938" height="1063" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1283255" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -269,13 +278,6 @@
     <entry file="file://$PROJECT_DIR$/Sprite.js" />
     <entry file="file://$PROJECT_DIR$/init.js" />
     <entry file="file://$PROJECT_DIR$/Game.js" />
-    <entry file="file://$PROJECT_DIR$/FlappyBird.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FlappyBird.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
@@ -283,10 +285,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FlappyBird.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="56" column="52" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FlappyBird.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="270" column="16" lean-forward="true" selection-start-line="270" selection-start-column="16" selection-end-line="270" selection-end-column="16" />
+        <state relative-caret-position="170">
+          <caret line="397" selection-start-line="397" selection-end-line="397" />
         </state>
       </provider>
     </entry>

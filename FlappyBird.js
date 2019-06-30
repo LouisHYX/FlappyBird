@@ -58,7 +58,7 @@ let FlappyBird = {
             /*设置*/
             setting: {node: document.getElementById('setting'), location: [0, -398], render: true}, // 设置按钮
             settingMenuBox: {node: document.getElementById('settingMenuBox'), location: [0, -818], render: true}, // 设置菜单背景
-            musicSwitch: {node: document.getElementById('musicSwitch'), location: [-332, -482], render: true}, // 音乐开关
+            musicSwitch: {node: document.getElementById('musicSwitch'), location: [-260, -482], render: true}, // 音乐开关
             soundSwitch: {node: document.getElementById('soundSwitch'), location: [-404, -482], render: true}, // 音效开关
             cuttingLineInSetting: {
                 node: document.getElementById('cuttingLineInSetting'),
@@ -71,13 +71,25 @@ let FlappyBird = {
                 location: [-288, -52],
                 render: true
             }, // 退出游戏按钮
+
+            /*声音*/
+            clickSound: {node: document.getElementById('clickSound'), render: false}, // 点击按钮声音
+            birdFlySound: {node: document.getElementById('birdFlySound'), render: false}, // 小鸟飞翔声音
+            gameOverSound: {node: document.getElementById('gameOverSound'), render: false}, // 小鸟死亡声音
         },
 
         /*图片url*/
         imageUrls: {
             bg: 'images/bg.png',
             maps: 'images/maps.png',
-            spriteSheet: 'images/sprite_sheet.png'
+            spriteSheet: 'images/sprite_sheet.png',
+        },
+
+        /*声音url*/
+        audioUrls: {
+            click: 'audios/click.mp3',
+            birdFly: 'audios/bird_fly.mp3',
+            gameOver: 'audios/game_over.mp3',
         },
     },
 
@@ -253,6 +265,10 @@ let FlappyBird = {
             this.lastTime = 0;
             this.gameTime = 0;
 
+            /*声音*/
+            this.musicOn = true; // 背景音乐是否开启
+            this.soundOn = true; // 音效是否开启
+
             /*事件*/
             this.currentTargetId = ''; // 存放当前触摸事件对象Id，如果touchstart与touchend事件对象不对应则不执行后续操作
             this.touchStartListeners = {}; // 存放touchstart事件监听器及处理函数
@@ -313,6 +329,8 @@ let FlappyBird = {
                         handler: function (e, me) {
                             e.preventDefault();
                             e.stopPropagation();
+
+                            me.nodes.clickSound.node.play();
 
                             /*给小鸟一个向上的初速度*/
                             if (!me.paused) { // 如果游戏没有停止，则可以点击
@@ -402,10 +420,13 @@ let FlappyBird = {
                                 case me.nodes.easyLevel.node.id:
                                 case me.nodes.normalLevel.node.id:
                                 case me.nodes.hardLevel.node.id:
+                                    me.nodes.clickSound.node.play();
                                     me.setGameLevel(e.target, me);
                                     break;
                                 case me.nodes.startGame.node.id:
                                     if (e.target.id === me.currentTargetId) {
+                                        me.nodes.clickSound.node.play();
+                                        me.nodes.birdFlySound.node.play();
                                         me.resetData(me);
                                         me.closeMenu(me.nodes.setting.node, me); // 隐藏设置按钮
                                         me.closeMenu(me.nodes.mainMenuBg.node, me); // 关闭主菜单
@@ -429,6 +450,8 @@ let FlappyBird = {
 
                             switch (e.target.id) {
                                 case me.nodes.restartGame.node.id:
+                                    me.nodes.clickSound.node.play();
+                                    me.nodes.birdFlySound.node.play();
                                     e.target.style.backgroundPosition = '0 -104px';
                                     me.resetData(me);
                                     me.closeMenu(me.nodes.deathMenuBox.node, me); // 关闭结束菜单
@@ -437,6 +460,7 @@ let FlappyBird = {
                                     });
                                     break;
                                 case me.nodes.goMainMenu.node.id:
+                                    me.nodes.clickSound.node.play();
                                     e.target.style.backgroundPosition = '0 -52px';
                                     me.closeMenu(me.nodes.scoreBoard.node, me); // 关闭计分板
                                     me.closeMenu(me.nodes.deathMenuBox.node, me); // 关闭结束菜单
@@ -444,6 +468,7 @@ let FlappyBird = {
                                     me.showMenu(me.nodes.mainMenuBg.node, me); // 显示主菜单
                                     break;
                                 case me.nodes.exitGame.node.id:
+                                    me.nodes.clickSound.node.play();
                                     e.target.style.backgroundPosition = '0 -156px';
                                     window.opener = null;
                                     window.open('', '_self');
@@ -460,6 +485,8 @@ let FlappyBird = {
                             e.preventDefault();
                             e.stopPropagation();
 
+                            me.nodes.clickSound.node.play();
+
                             e.target.style.backgroundPosition = '0 -398px';
                             me.closeMenu(me.nodes.mainMenuBox.node, me); // 关闭主菜单，背景保留
                             me.showMenu(me.nodes.settingMenuBox.node, me); // 开启设置菜单
@@ -474,12 +501,34 @@ let FlappyBird = {
                             e.stopPropagation();
 
                             switch (e.target.id) {
+                                case me.nodes.musicSwitch.node.id:
+                                    me.nodes.clickSound.node.play();
+                                    me.musicOn = !me.musicOn;
+                                    if (me.musicOn) {
+                                        e.target.style.backgroundPosition = '-260px -482px';
+                                    } else {
+                                        e.target.style.backgroundPosition = '-332px -482px';
+                                    }
+                                    break;
+                                case me.nodes.soundSwitch.node.id:
+                                    me.nodes.clickSound.node.play();
+                                    me.soundOn = !me.soundOn;
+                                    if (me.soundOn) {
+                                        e.target.style.backgroundPosition = '-404px -482px';
+                                        me.nodes.clickSound.node.muted = false;
+                                    } else {
+                                        e.target.style.backgroundPosition = '-476px -482px';
+                                        me.nodes.clickSound.node.muted = true;
+                                    }
+                                    break;
                                 case me.nodes.getBack.node.id:
+                                    me.nodes.clickSound.node.play();
                                     e.target.style.backgroundPosition = '-288px 0';
                                     me.closeMenu(me.nodes.settingMenuBox.node, me); // 关闭设置菜单
                                     me.showMenu(me.nodes.mainMenuBox.node, me); // 显示主菜单
                                     break;
                                 case me.nodes.confirm.node.id:
+                                    me.nodes.clickSound.node.play();
                                     e.target.style.backgroundPosition = '-288px -52px';
                                     break;
                             }
@@ -829,6 +878,9 @@ let FlappyBird = {
                 me.gameOver = true;
                 me.paused = true;
                 me.bird.death = true;
+
+                me.nodes.gameOverSound.node.play();
+                me.nodes.birdFlySound.node.pause();
 
                 let deadBird = document.createElement('div');
                 let deadBird_v = -140;
